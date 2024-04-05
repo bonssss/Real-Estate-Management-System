@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Property;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property\Property;
+use App\Models\Property\PropertyImage;
 
 class PropertyController extends Controller
 {
@@ -21,7 +22,10 @@ class PropertyController extends Controller
 public function single($id){
     $singleProp = Property::find($id);
 
-    return view('Property.single', compact('singleProp'));
+    $propertyimages = PropertyImage::where('prop_id',$id)->get();
+
+
+    return view('Property.single', compact('singleProp','propertyimages'));
 }
 
 
