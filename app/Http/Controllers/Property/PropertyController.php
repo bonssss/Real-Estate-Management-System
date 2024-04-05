@@ -16,4 +16,14 @@ class PropertyController extends Controller
     return view('home', compact('Props'));
 }
 
+// property details
+
+public function single($id){
+    $singleProp = Property::find($id);
+
+    return view('Property.single', compact('singleProp'));
+}
+
+
+
 } 

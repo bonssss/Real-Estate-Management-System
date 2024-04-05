@@ -25,8 +25,8 @@
                         <div class="col-md-10">
                           <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">{{$prop->type}}</span>
                           <h1 class="mb-2">{{$prop->title}}</h1>
-                          <p class="mb-5"><strong class="h2 text-success font-weight-bold">{{$prop->price}}</strong></p>
-                          <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+                          <p class="mb-5"><strong class="h2 text-success font-weight-bold">${{$prop->price}}</strong></p>
+                          <p><a href="{{route('single.prop',$prop->id)}}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
                         </div>
                       </div>
                     </div>
@@ -36,7 +36,7 @@
 
                
           
-                <div class="site-blocks-cover overlay" style="background-image: url({{asset('assets/images/hero_bg_2.jpg')}});" data-aos="fade">
+                {{-- <div class="site-blocks-cover overlay" style="background-image: url({{asset('assets/images/hero_bg_2.jpg')}});" data-aos="fade">
                   <div class="container">
                     <div class="row align-items-center justify-content-center text-center">
                       <div class="col-md-10">
@@ -47,7 +47,7 @@
                       </div>
                     </div>
                   </div>
-                </div>  
+                </div>   --}}
           
               </div>
             </div>
@@ -145,7 +145,7 @@
             @foreach ($Props as $prop )
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="property-entry h-100">
-                  <a href="property-details.html" class="property-thumbnail">
+                  <a href="{{route('single.prop',$prop->id)}}" class="property-thumbnail">
                     <div class="offer-type-wrap">
                       {{-- <span class="offer-type bg-danger">Sale</span> --}}
                       <span class="offer-type bg-success">{{$prop->type}}</span>
@@ -156,7 +156,7 @@
                     <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
                     <h2 class="property-title"><a href="property-details.html">{{$prop->title}}</a></h2>
                     <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> {{$prop->location}}</span>
-                    <strong class="property-price text-primary mb-3 d-block text-success">{{$prop->price}}</strong>
+                    <strong class="property-price text-primary mb-3 d-block text-success">${{$prop->price}}</strong>
                     <ul class="property-specs-wrap mb-3 mb-lg-0">
                       <li>
                         <span class="property-specs">Beds</span>
