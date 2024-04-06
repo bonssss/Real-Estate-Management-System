@@ -138,7 +138,7 @@
         @foreach ($relatedProperties as $relatedprop )
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="property-entry h-100">
-            <a href="property-details.html" class="property-thumbnail">
+            <a href="{{route('single.prop',$relatedprop->id)}}" class="property-thumbnail">
               <div class="offer-type-wrap">
                 <span class="offer-type bg-danger">{{$relatedprop->type}}</span>
                 {{-- <span class="offer-type bg-success">Rent</span> --}}
