@@ -24,8 +24,13 @@ public function single($id){
 
     $propertyimages = PropertyImage::where('prop_id',$id)->get();
 
+    // related properties controller
 
-    return view('Property.single', compact('singleProp','propertyimages'));
+    $relatedProperties = Property::where('home_type',$singleProp->home_type)->where('id','!=',$id)
+    ->take(3)->orderBy('created_at','desc')->get();
+
+
+    return view('Property.single', compact('singleProp','propertyimages','relatedProperties'));
 }
 
 
