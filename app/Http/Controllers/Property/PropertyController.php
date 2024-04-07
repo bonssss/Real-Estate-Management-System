@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Property;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyImage;
+use App\Models\Property\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
@@ -34,5 +36,24 @@ public function single($id){
 }
 
 
+
+public function sendRequest(Request $request){
+  $sendrequest =Requests::create([
+
+    "prop_id"=> $request->prop_id,
+    "user_id"=> Auth::user()->id,
+    "agent_name"=> $request->agent_name,
+    "name"=> $request->name,
+    "email"=> $request->email,
+    "phone_number"=> $request->phone_number,
+
+
+  ]);
+
+  echo "request sent successfully";
+ 
+
+  // return view('home', compact('Props'));
+}
 
 } 

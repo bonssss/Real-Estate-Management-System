@@ -89,21 +89,32 @@
           <div class="bg-white widget border rounded">
 
             <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
-            <form action="" class="form-contact-agent">
+            <form action="{{route('insert.request',$singleProp->id)}}" method="POST" class="form-contact-agent">
+              @csrf
+              <div class="form-group">
+                <label for="name">prop_id</label>
+                <input type="text" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="name">agent_name</label>
+                <input type="text"  name="agent_name" value="{{$singleProp->agent_name}}" id="name" class="form-control">
+              </div>
+              
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" class="form-control">
+                <input type="text" name="name" id="name" class="form-control">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" class="form-control">
+                <input type="email" name="email" id="email" class="form-control">
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" id="phone" class="form-control">
+                <input type="text" name="phone_number" id="phone" class="form-control">
               </div>
               <div class="form-group">
-                <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
+                <input type="submit" name="submit" id="phone" class="btn btn-primary" value="Send request">
               </div>
             </form>
           </div>
