@@ -93,12 +93,12 @@
               @csrf
               <div class="form-group">
                 <label for="name">prop_id</label>
-                <input type="text" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
+                <input type="hidden" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
               </div>
 
               <div class="form-group">
                 <label for="name">agent_name</label>
-                <input type="text"  name="agent_name" value="{{$singleProp->agent_name}}" id="name" class="form-control">
+                <input type="hidden"  name="agent_name" value="{{$singleProp->agent_name}}" id="name" class="form-control">
               </div>
               
               <div class="form-group">
