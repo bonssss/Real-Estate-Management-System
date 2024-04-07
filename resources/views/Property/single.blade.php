@@ -14,6 +14,13 @@
     </div>
   </div>
 
+  @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{!! \Session::get('success') !!}</p>
+    </div>
+@endif
+
+
   <div class="site-section site-section-sm">
     <div class="container">
       <div class="row">
@@ -92,27 +99,45 @@
             <form action="{{route('insert.request',$singleProp->id)}}" method="POST" class="form-contact-agent">
               @csrf
               <div class="form-group">
-                <label for="name">prop_id</label>
                 <input type="hidden" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
               </div>
 
               <div class="form-group">
-                <label for="name">agent_name</label>
                 <input type="hidden"  name="agent_name" value="{{$singleProp->agent_name}}" id="name" class="form-control">
               </div>
               
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" class="form-control">
+
+
               </div>
+              @error('name')
+              <span class="text-danger" role="alert">
+                <strong>{{$message}}</strong>
+              </span>
+                
+              @enderror
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control">
               </div>
+              @error('email')
+              <span class="text-danger" role="alert">
+                <strong>{{$message}}</strong>
+              </span>
+                
+              @enderror
               <div class="form-group">
                 <label for="phone">Phone</label>
                 <input type="text" name="phone_number" id="phone" class="form-control">
               </div>
+              @error('phone_number')
+              <span class="text-danger" role="alert">
+                <strong>{{$message}}</strong>
+              </span>
+                
+              @enderror
               <div class="form-group">
                 <input type="submit" name="submit" id="phone" class="btn btn-primary" value="Send request">
               </div>

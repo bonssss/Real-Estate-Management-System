@@ -38,6 +38,14 @@ public function single($id){
 
 
 public function sendRequest(Request $request){
+
+  Request()->validate([
+
+    "name"=> "required|max:50",
+    "email"=> "required|max:80",
+    "phone_number"=> "required|max:50",
+  ]);
+
   $sendrequest =Requests::create([
 
     "prop_id"=> $request->prop_id,
@@ -49,6 +57,11 @@ public function sendRequest(Request $request){
 
 
   ]);
+
+  if ($sendrequest) {
+    return redirect('/props/property-details/'.$request->prop_id)->with('success', 'Request sent successfully');
+}
+
 
   echo "request sent successfully";
  
