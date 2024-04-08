@@ -154,7 +154,7 @@
                   </a>
                   <div class="p-4 property-body">
                     <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                    <h2 class="property-title"><a href="property-details.html">{{$prop->title}}</a></h2>
+                    <h2 class="property-title"><a href="{{route('single.prop',$prop->id)}}">{{$prop->title}}</a></h2>
                     <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> {{$prop->location}}</span>
                     <strong class="property-price text-primary mb-3 d-block text-success">${{$prop->price}}</strong>
                     <ul class="property-specs-wrap mb-3 mb-lg-0">

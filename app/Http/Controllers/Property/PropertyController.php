@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Property;
 
 use App\Http\Controllers\Controller;
+use App\Models\Property\Favorite;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyImage;
 use App\Models\Property\Requests;
@@ -32,7 +33,11 @@ public function single($id){
     ->take(3)->orderBy('created_at','desc')->get();
 
 
-    return view('Property.single', compact('singleProp','propertyimages','relatedProperties'));
+    //validation
+    $formvalidation = Requests::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
+
+
+    return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation'));
 }
 
 
@@ -69,4 +74,29 @@ public function sendRequest(Request $request){
   // return view('home', compact('Props'));
 }
 
+
+
+
+public function FavoriteList(Request $request){
+
+ 
+
+  $saveFavorite =Favorite::create([
+
+    "prop_id"=> $request->prop_id,
+    "user_id"=> Auth::user()->id,
+    "title"=> $request->title, 
+    "image"=> $request->image,
+    "location"=> $request->location,
+    "price"=> $request->price,
+
+
+  ]);
+
+  if ($saveFavorite) {
+    return redirect('/props/property-details/'.$request->prop_id)->with('save', 'Property saved successfully');
+}
+
+// echo "save success fully";
+}
 } 

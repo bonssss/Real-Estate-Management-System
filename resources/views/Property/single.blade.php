@@ -21,6 +21,14 @@
 @endif
   </div>
 
+  <div class="container">
+    @if (\Session::has('save'))
+      <div class="alert alert-success">
+          <p>{!! \Session::get('save') !!}</p>
+      </div>
+  @endif
+    </div>
+
 
   <div class="site-section site-section-sm">
     <div class="container">
@@ -97,6 +105,13 @@
           <div class="bg-white widget border rounded">
 
             <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
+
+            @if ($formvalidation >0)
+            
+              <p class="alert alert-success"> You already sent request</p>
+            
+              
+            @else
             <form action="{{route('insert.request',$singleProp->id)}}" method="POST" class="form-contact-agent">
               @csrf
               <div class="form-group">
@@ -143,6 +158,53 @@
                 <input type="submit" name="submit" id="phone" class="btn btn-primary" value="Send request">
               </div>
             </form>
+            @endif
+          
+          </div>
+        
+
+
+          <div class="bg-white widget border rounded">
+
+            <h3 class="h4 text-black widget-title mb-3">Save Favorite</h3>
+{{-- 
+            @if ($formvalidation >0)
+            
+              <p class="alert alert-success"> You already sent request</p>
+            
+              
+            @else --}}
+            <form action="{{ route('save.favorite', $singleProp->id) }}" method="POST" class="form-contact-agent">
+              @csrf
+
+              <div class="form-group">
+                <input type="hidden" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <input type="hidden"  name="title" value="{{$singleProp->title}}" id="name" class="form-control">
+              </div>
+              
+              <div class="form-group">
+                <input type="hidden"  value="{{$singleProp->image}}" name="image" id="name" class="form-control">
+
+
+              </div>
+              
+              <div class="form-group">
+                <input type="hidden" value="{{$singleProp->location}}" name="location" id="location" class="form-control">
+              </div>
+            
+              <div class="form-group">
+                <input type="hidden" value="{{$singleProp->price}}" name="price" id="phone" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <input type="submit" name="submit" id="phone" class="btn btn-primary" value="save property">
+              </div>
+            </form>
+            {{-- @endif --}}
+          
           </div>
 
           <div class="bg-white widget border rounded">
