@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Property\Favorite;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyImage;
+use App\Models\Property\PropertyType;
 use App\Models\Property\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class PropertyController extends Controller
 {
@@ -125,5 +127,13 @@ public function PropertyRent(){
   return view('Property.propsrent', compact('PropsRent'));
 }
 
+
+public function propType($propstype){
+
+  $propertytypes = Property::select()->where('home_type', $propstype)->get();
+
+
+  return view('Property.propsresidential',compact('propertytypes','propstype'));
+}
 
 } 
