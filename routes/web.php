@@ -31,3 +31,10 @@ Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController:
 
  Route::get('props/hometype/{propstype}/', [App\Http\Controllers\Property\PropertyController::class, 'propType'])->name('proptype.prop');
  
+//contact
+
+ Route::get('contact', [App\Http\Controllers\HomeController::class, 'Contact'])->name('contact');
+
+ // about
+
+ Route::get('about', [App\Http\Controllers\HomeController::class, 'About'])->name('about');
