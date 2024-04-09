@@ -33,11 +33,16 @@ public function single($id){
     ->take(3)->orderBy('created_at','desc')->get();
 
 
-    //validation
+    //validation send request
     $formvalidation = Requests::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
 
 
-    return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation'));
+    //  validating  sending favorite items 
+    $favoritevalidation = Favorite::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
+
+
+
+    return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation','favoritevalidation'));
 }
 
 

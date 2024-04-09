@@ -167,13 +167,13 @@
           <div class="bg-white widget border rounded">
 
             <h3 class="h4 text-black widget-title mb-3">Save Favorite</h3>
-{{-- 
-            @if ($formvalidation >0)
+
+            @if ($favoritevalidation >0)
             
-              <p class="alert alert-success"> You already sent request</p>
+              <p class="alert alert-success"> You already saved the property</p>
             
               
-            @else --}}
+            @else
             <form action="{{ route('save.favorite', $singleProp->id) }}" method="POST" class="form-contact-agent">
               @csrf
 
@@ -203,7 +203,7 @@
                 <input type="submit" name="submit" id="phone" class="btn btn-primary" value="save property">
               </div>
             </form>
-            {{-- @endif --}}
+            @endif
           
           </div>
 
