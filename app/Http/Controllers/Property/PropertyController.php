@@ -114,4 +114,16 @@ public function PropertyBuy(){
 
   return view('Property.propsbuy', compact('PropsBuy'));
 }
+
+
+public function PropertyRent(){
+  $type ="Rent";
+
+  $PropsRent = Property::select()->where('type', $type)->get();
+
+
+  return view('Property.propsrent', compact('PropsRent'));
+}
+
+
 } 

@@ -21,3 +21,8 @@ Route::post('props/property-favorite/{id}', [App\Http\Controllers\Property\Prope
 
 // route for proprties rent and buy
 Route::get('props/type/Buy', [App\Http\Controllers\Property\PropertyController::class, 'PropertyBuy'])->name('buy.prop');
+
+
+//route for rent
+
+Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController::class, 'PropertyRent'])->name('rent.prop');

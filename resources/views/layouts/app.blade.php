@@ -107,7 +107,7 @@
                         <a href="index.html">Home</a>
                       </li>
                       <li><a href="{{route('buy.prop')}}">Buy</a></li>
-                      <li><a href="">Rent</a></li>
+                      <li><a href="{{route('rent.prop')}}">Rent</a></li>
                       <li class="has-children">
                         <a href="properties.html">Properties</a>
                         <ul class="dropdown arrow-top">
