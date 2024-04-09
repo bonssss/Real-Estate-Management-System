@@ -17,3 +17,7 @@ Route::post('props/property-details/{id}', [App\Http\Controllers\Property\Proper
 
 //favorite
 Route::post('props/property-favorite/{id}', [App\Http\Controllers\Property\PropertyController::class, 'FavoriteList'])->name('save.favorite');
+
+
+// route for proprties rent and buy
+Route::get('props/type/Buy', [App\Http\Controllers\Property\PropertyController::class, 'PropertyBuy'])->name('buy.prop');

@@ -104,4 +104,14 @@ public function FavoriteList(Request $request){
 
 // echo "save success fully";
 }
+
+
+public function PropertyBuy(){
+  $type ="Buy";
+
+  $PropsBuy = Property::select()->where('type', $type)->get();
+
+
+  return view('Property.propsbuy', compact('PropsBuy'));
+}
 } 
