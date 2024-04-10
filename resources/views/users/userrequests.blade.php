@@ -121,7 +121,7 @@
        
         @else
           
-       <p class="alert alert-success">No Buy property is found</p>
+       <p class="alert alert-success"> You are not sent request yet</p>
           
         @endif
        
