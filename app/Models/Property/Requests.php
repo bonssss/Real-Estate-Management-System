@@ -21,5 +21,5 @@ class Requests extends Model
         
     ];
 
-    public $timestaps = true;
+    public $timestamps = true;
 }

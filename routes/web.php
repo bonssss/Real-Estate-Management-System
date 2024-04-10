@@ -44,3 +44,11 @@ Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController:
 
 // price descending
  Route::get('props/price-desce', [App\Http\Controllers\Property\PropertyController::class, 'PriceDesce'])->name('orderby.desce.price');
+
+
+ // users requests on its side 
+
+//  Route::get('users/sent-requests', [App\Http\Controllers\Users\UsersController::class, 'sentRequests'])->name('users.request');
+
+
+Route::get('/user-requests', [App\Http\Controllers\Users\UsersController::class, 'showUserRequests'])->name('user.requests');

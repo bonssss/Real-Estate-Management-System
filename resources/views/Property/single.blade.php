@@ -105,7 +105,7 @@
           <div class="bg-white widget border rounded">
 
             <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
-              @if(isset(Auth::user()->id)){
+              @if(isset(Auth::user()->id))
 
                   
             @if ($formvalidation >0)
@@ -161,7 +161,7 @@
               </div>
             </form>
             @endif
-          }
+          
             @else
             <p  class="alert alert-warning" >Log in to send request</p>
             
@@ -173,7 +173,7 @@
           <div class="bg-white widget border rounded">
 
             <h3 class="h4 text-black widget-title mb-3">Save Favorite</h3>
-            @if(isset(Auth::user()->id)){
+            @if(isset(Auth::user()->id))
 
             @if ($favoritevalidation >0)
             
@@ -211,7 +211,7 @@
               </div>
             </form>
             @endif
-          }
+          
           @else
             <p class="alert alert-warning">Login to save to favorite</p>
           
