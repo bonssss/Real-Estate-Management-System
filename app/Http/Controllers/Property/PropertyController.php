@@ -16,7 +16,7 @@ class PropertyController extends Controller
 {
     //
   public function index(){
-    $Props = Property::select()->take(9)->orderBy('created_at', 'desc')->get();
+    $Props = Property::select()->take(9)->orderBy('id', 'desc')->get();
 
 
     return view('home', compact('Props'));
@@ -163,5 +163,22 @@ public function PriceDesce(){
 
   return view('Property.propsdescending',compact('propertypricedesc'));
 }
+
+//search controller
+
+public function searchproperty(Request $request){
+  $list_types = $request->get('list_types');
+  $offer_types = $request->get('offer_types');
+  $city = $request->get('city');
+
+  $seachesprop = Property::select()->where('home_type','like',"%$list_types%")
+                ->where('type','like',"%$offer_types%")
+                ->where('city','like',"%$city%")->get();
+
+
+
+  return view('Property.searchprops',compact('seachesprop'));
+}
 } 
+
 

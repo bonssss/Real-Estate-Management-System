@@ -57,16 +57,17 @@
             <div class="site-section site-section-sm pb-0">
                 <div class="container">
                   <div class="row">
-                    <form class="form-search col-md-12" style="margin-top: -100px;">
+                    <form action="{{route('search.property')}}"  method="POST" class="form-search col-md-12" style="margin-top: -100px;">
+                      @csrf
                       <div class="row  align-items-end">
                         <div class="col-md-3">
                           <label for="list-types">Listing Types</label>
                           <div class="select-wrap">
                             <span class="icon icon-arrow_drop_down"></span>
-                            <select name="list-types" id="list-types" class="form-control d-block rounded-0">
-                              <option value="">Condo</option>
-                              <option value="">Commercial Building</option>
-                              <option value="">Land Property</option>
+                            <select name="list_types" id="list-types" class="form-control d-block rounded-0">
+                              <option value="Residential">Residential</option>
+                              <option value="Mixed-Use">Mixed-Use</option>
+                              <option value="Apartment">Apartment</option>
                             </select>
                           </div>
                         </div>
@@ -74,10 +75,9 @@
                           <label for="offer-types">Offer Type</label>
                           <div class="select-wrap">
                             <span class="icon icon-arrow_drop_down"></span>
-                            <select name="offer-types" id="offer-types" class="form-control d-block rounded-0">
-                              <option value="">For Sale</option>
-                              <option value="">For Rent</option>
-                              <option value="">For Lease</option>
+                            <select name="offer_types" id="offer-types" class="form-control d-block rounded-0">
+                              <option value="Buy">For Buy</option>
+                              <option value="Rent">For Rent</option>
                             </select>
                           </div>
                         </div>
@@ -85,17 +85,17 @@
                           <label for="select-city">Select City</label>
                           <div class="select-wrap">
                             <span class="icon icon-arrow_drop_down"></span>
-                            <select name="select-city" id="select-city" class="form-control d-block rounded-0">
-                              <option value="">New York</option>
-                              <option value="">Brooklyn</option>
-                              <option value="">London</option>
-                              <option value="">Japan</option>
-                              <option value="">Philippines</option>
+                            <select name="city" id="select-city" class="form-control d-block rounded-0">
+                              <option value="AddisAbaba">AddisAbaba</option>
+                              <option value="Adama">Adama</option>
+                              <option value="Mexico">Mexico</option>
+                              <option value="Ayat">Ayat</option>
+                              <option value="Sarbet">Sarbet</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-3">
-                          <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
+                          <input name="submit" type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
                         </div>
                       </div>
                     </form>

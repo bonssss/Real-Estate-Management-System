@@ -54,5 +54,7 @@ Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController:
 Route::get('/user-requests', [App\Http\Controllers\Users\UsersController::class, 'showUserRequests'])->name('user.requests');
 
 
-
+// favorite list
 Route::get('/user-favorites', [App\Http\Controllers\Users\UsersController::class, 'showUserFavorites'])->name('user.favoriets');
+// search
+Route::any('/search', [App\Http\Controllers\Property\PropertyController::class, 'searchproperty'])->name('search.property');
