@@ -38,3 +38,9 @@ Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController:
  // about
 
  Route::get('about', [App\Http\Controllers\HomeController::class, 'About'])->name('about');
+
+
+ Route::get('props/price-asce', [App\Http\Controllers\Property\PropertyController::class, 'PriceAsce'])->name('orderby.asce.price');
+
+// price descending
+ Route::get('props/price-desce', [App\Http\Controllers\Property\PropertyController::class, 'PriceDesce'])->name('orderby.desce.price');

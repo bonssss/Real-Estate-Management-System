@@ -34,17 +34,26 @@ public function single($id){
     $relatedProperties = Property::where('home_type',$singleProp->home_type)->where('id','!=',$id)
     ->take(3)->orderBy('created_at','desc')->get();
 
-
-    //validation send request
-    $formvalidation = Requests::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
-
-
-    //  validating  sending favorite items 
-    $favoritevalidation = Favorite::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
+   if (auth()->user()){
+      //validation send request
+      $formvalidation = Requests::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
 
 
+      //  validating  sending favorite items 
+      $favoritevalidation = Favorite::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
+  
+  
+  
+      return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation','favoritevalidation'));
+  
+      
+    
+   }else
+   {
+    return view('Property.single', compact('singleProp','propertyimages','relatedProperties'));
 
-    return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation','favoritevalidation'));
+   }
+  
 }
 
 
@@ -136,4 +145,23 @@ public function propType($propstype){
   return view('Property.propsresidential',compact('propertytypes','propstype'));
 }
 
+// property list in ascending order
+public function PriceAsce(){
+
+  $propertypriceasc = Property::select()->orderBy('price','asc')->get();
+
+
+  return view('Property.propsascending',compact('propertypriceasc'));
+}
+
+
+// property list in ascending order
+public function PriceDesce(){
+
+  $propertypricedesc = Property::select()->orderBy('price','desc')->get();
+
+
+  return view('Property.propsdescending',compact('propertypricedesc'));
+}
 } 
+
