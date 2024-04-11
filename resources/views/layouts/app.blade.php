@@ -109,7 +109,7 @@
                       <li><a href="{{route('buy.prop')}}">Buy</a></li>
                       <li><a href="{{route('rent.prop')}}">Rent</a></li>
                       <li class="has-children">
-                        <a href="properties.html">Properties</a>
+                        <a href="#">Properties</a>
                         <ul class="dropdown arrow-top">
                           @foreach ($propertytype as $propstype )
                           <li><a href="{{route('proptype.prop',$propstype->propstype)}}">{{$propstype->propstype}}</a></li>

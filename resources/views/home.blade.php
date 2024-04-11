@@ -23,7 +23,13 @@
                     <div class="container">
                       <div class="row align-items-center justify-content-center text-center">
                         <div class="col-md-10">
+                          @if ($prop->type == 'Buy')
                           <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">{{$prop->type}}</span>
+@else
+<span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">{{$prop->type}}</span>
+
+                         
+                          @endif
                           <h1 class="mb-2">{{$prop->title}}</h1>
                           <p class="mb-5"><strong class="h2 text-success font-weight-bold">${{$prop->price}}</strong></p>
                           <p><a href="{{route('single.prop',$prop->id)}}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
@@ -148,7 +154,14 @@
                   <a href="{{route('single.prop',$prop->id)}}" class="property-thumbnail">
                     <div class="offer-type-wrap">
                       {{-- <span class="offer-type bg-danger">Sale</span> --}}
+                      @if ($prop->type == 'Buy')
                       <span class="offer-type bg-success">{{$prop->type}}</span>
+                      @else
+                      <span class="offer-type bg-danger">{{$prop->type}}</span>
+
+
+                        
+                      @endif
                     </div>
                     <img src="{{asset('assets/images/'.$prop->image.'')}}" alt="Image" class="img-fluid">
                   </a>

@@ -86,8 +86,11 @@
           <div class="property-entry h-100">
             <a href="{{ route('single.prop', $item['property']->id) }}" class="property-thumbnail">
               <div class="offer-type-wrap">
+                @if ($item['property']->type == 'Buy')
+                <span class="offer-type bg-success">{{ $item['property']->type }}</span>
+                @else
                 <span class="offer-type bg-danger">{{ $item['property']->type }}</span>
-                {{-- <span class="offer-type bg-success">Rent</span> --}}
+                @endif
               </div>
               <img src="{{ asset('assets/images/' . $item['property']->image) }}" alt="Image" class="img-fluid">
             </a>
