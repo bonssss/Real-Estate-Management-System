@@ -58,3 +58,18 @@ Route::get('/user-requests', [App\Http\Controllers\Users\UsersController::class,
 Route::get('/user-favorites', [App\Http\Controllers\Users\UsersController::class, 'showUserFavorites'])->name('user.favoriets');
 // search
 Route::any('/search', [App\Http\Controllers\Property\PropertyController::class, 'searchproperty'])->name('search.property');
+
+
+
+// admin login
+
+
+Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'viewLogin'])->name('view.login');
+  
+Route::post('/admin/checklogin', [App\Http\Controllers\Admin\AdminController::class, 'checkLogin'])->name('check.login');
+
+Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+
+// Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])
+//     ->name('check.dashboard')
+//     ->middleware('auth:admin');
