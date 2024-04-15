@@ -22,7 +22,7 @@ Route::post('props/property-favorite/{id}', [App\Http\Controllers\Property\Prope
 // route for proprties rent and buy
 Route::get('props/type/Buy', [App\Http\Controllers\Property\PropertyController::class, 'PropertyBuy'])->name('buy.prop');
 
-  
+
 //route for rent
 
 Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController::class, 'PropertyRent'])->name('rent.prop');
@@ -30,7 +30,7 @@ Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController:
  // route for property types
 
  Route::get('props/hometype/{propstype}/', [App\Http\Controllers\Property\PropertyController::class, 'propType'])->name('proptype.prop');
- 
+
 //contact
 
  Route::get('contact', [App\Http\Controllers\HomeController::class, 'Contact'])->name('contact');
@@ -46,7 +46,7 @@ Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController:
  Route::get('props/price-desce', [App\Http\Controllers\Property\PropertyController::class, 'PriceDesce'])->name('orderby.desce.price');
 
 
- // users requests on its side 
+ // users requests on its side
 
 //  Route::get('users/sent-requests', [App\Http\Controllers\Users\UsersController::class, 'sentRequests'])->name('users.request');
 
@@ -65,11 +65,29 @@ Route::any('/search', [App\Http\Controllers\Property\PropertyController::class, 
 
 
 Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'viewLogin'])->name('view.login');
-  
+
 Route::post('/admin/checklogin', [App\Http\Controllers\Admin\AdminController::class, 'checkLogin'])->name('check.login');
 
-Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+Route::group(['prefix' => 'admin','middleware'=> 'auth:admin'],function(){
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+})
+
+;
 
 // Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])
 //     ->name('check.dashboard')
 //     ->middleware('auth:admin');
+
+
+
+// create agent
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'showCreateAgentForm'])->name('admin.agents.create');
+    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.create.agent');
+// create home type and list
+    Route::get('/admin/allhometypes', [App\Http\Controllers\Admin\AdminController::class, 'homeTypes'])->name('admin.hometypes');
+    Route::get('/admin/hometypes/create', [App\Http\Controllers\Admin\AdminController::class, 'createhomeTypes'])->name('admin.hometypes.create');
+    Route::post('/admin/hometypes', [App\Http\Controllers\Admin\AdminController::class, 'savecreatehomeTypes'])->name('admin.hometypes.save');
+
+});
