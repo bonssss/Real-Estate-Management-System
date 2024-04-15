@@ -90,4 +90,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/hometypes/create', [App\Http\Controllers\Admin\AdminController::class, 'createhomeTypes'])->name('admin.hometypes.create');
     Route::post('/admin/hometypes', [App\Http\Controllers\Admin\AdminController::class, 'savecreatehomeTypes'])->name('admin.hometypes.save');
 
+
+// update hometype  '
+Route::get('/admin/hometypes/update/{id}', [App\Http\Controllers\Admin\AdminController::class, 'updatehomeTypes'])->name('admin.hometypes.update');
+Route::post('/admin/hometypes/updatesave/{id}', [App\Http\Controllers\Admin\AdminController::class, 'saveupdatehomeTypes'])->name('hometypes.update.save');
+
+
 });

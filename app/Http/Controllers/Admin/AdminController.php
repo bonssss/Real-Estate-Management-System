@@ -99,6 +99,41 @@ if($savehometype)
     }
 
 
+    public function  updatehomeTypes($id)
+    {
+
+        $propertytypeedit = PropertyType::find($id);
+
+        return view('admin.updatehometypes', compact('propertytypeedit'));
+    }
+
+
+
+
+
+    public function saveupdatehomeTypes (Request $request, $id)
+    {
+
+
+        Request()->validate([
+            "propstype"=> "required|max:50"
+        ]);
+
+       $singlehometype = PropertyType::find($id);
+       $singlehometype->update($request->all());
+
+
+if($singlehometype)
+        return redirect('/admin/allhometypes')->with('update', 'Property type  updated successfully.');
+    }
+
+
+
+
+
+
+
+
 
 }
 

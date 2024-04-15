@@ -12,6 +12,14 @@
                     <p>{!! \Session::get('success') !!}</p>
                 </div>
             @endif
+
+
+
+            @if (\Session::has('update'))
+            <div class="alert alert-success">
+                <p>{!! \Session::get('update') !!}</p>
+            </div>
+        @endif
               <h5 class="card-title mb-4 d-inline">Hometypes</h5>
               <a href="{{route('admin.hometypes.create')}}" class="btn btn-primary mb-4 text-center float-right">Create Hometypes</a>
               <table class="table">
@@ -31,7 +39,7 @@
                   <tr>
                     <th scope="row">{{$hometype->id}}</th>
                     <td>{{$hometype->propstype}}</td>
-                    <td><a  href="update-hometype.html" class="btn btn-warning text-white text-center ">Update</a></td>
+                    <td><a  href="{{route('admin.hometypes.update',$hometype->id)}}" class="btn btn-warning text-white text-center ">Update</a></td>
                     <td><a href="delete-hometype.html" class="btn btn-danger  text-center ">Delete</a></td>
                     @endforeach
                 </tbody>
