@@ -7,6 +7,7 @@ use App\Models\Admin\Admin;
 use App\Models\Agent\Agent;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyType;
+use App\Models\Property\Requests;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -98,6 +99,61 @@ if($savehometype)
         return redirect('/admin/allhometypes')->with('success', 'Property type created successfully.');
     }
 
+
+    public function  updatehomeTypes($id)
+    {
+
+        $propertytypeedit = PropertyType::find($id);
+
+        return view('admin.updatehometypes', compact('propertytypeedit'));
+    }
+
+
+// update
+
+
+    public function saveupdatehomeTypes (Request $request, $id)
+    {
+
+
+        Request()->validate([
+            "propstype"=> "required|max:50"
+        ]);
+
+       $singlehometype = PropertyType::find($id);
+       $singlehometype->update($request->all());
+
+
+if($singlehometype){
+        return redirect('/admin/allhometypes')->with('update', 'Property type  updated successfully.');
+    }
+}
+
+
+
+
+// delete
+public function  deletehomeTypes($id)
+    {
+
+        $propertytypedelete = PropertyType::find($id);
+        $propertytypedelete->delete();
+
+
+        if($propertytypedelete){
+            return redirect('/admin/allhometypes')->with('delete', 'Property type  deleted successfully.');
+        }    }
+
+
+
+
+        // requests
+
+        public function  requestsAdmin()
+    {
+        $allrequests= Requests::select()->get();
+        return view('admin.allrequests', compact('allrequests'));
+    }
 
 
 }
