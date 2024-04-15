@@ -19,7 +19,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            
+
             <div class="collapse navbar-collapse" id="navbarText">
                 @auth('admin')
                     <ul class="navbar-nav side-nav">
@@ -36,7 +36,7 @@
                             <a class="nav-link" href="">Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Requests</a>
+                            <a class="nav-link" href="{{route('admin.requests')}}">Requests</a>
                         </li>
                     </ul>
                 @endauth

@@ -7,6 +7,7 @@ use App\Models\Admin\Admin;
 use App\Models\Agent\Agent;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyType;
+use App\Models\Property\Requests;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -108,7 +109,7 @@ if($savehometype)
     }
 
 
-
+// update
 
 
     public function saveupdatehomeTypes (Request $request, $id)
@@ -123,16 +124,36 @@ if($savehometype)
        $singlehometype->update($request->all());
 
 
-if($singlehometype)
+if($singlehometype){
         return redirect('/admin/allhometypes')->with('update', 'Property type  updated successfully.');
     }
+}
 
 
 
 
+// delete
+public function  deletehomeTypes($id)
+    {
+
+        $propertytypedelete = PropertyType::find($id);
+        $propertytypedelete->delete();
+
+
+        if($propertytypedelete){
+            return redirect('/admin/allhometypes')->with('delete', 'Property type  deleted successfully.');
+        }    }
 
 
 
+
+        // requests
+
+        public function  requestsAdmin()
+    {
+        $allrequests= Requests::select()->get();
+        return view('admin.allrequests', compact('allrequests'));
+    }
 
 
 }

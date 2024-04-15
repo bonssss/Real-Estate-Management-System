@@ -96,4 +96,12 @@ Route::get('/admin/hometypes/update/{id}', [App\Http\Controllers\Admin\AdminCont
 Route::post('/admin/hometypes/updatesave/{id}', [App\Http\Controllers\Admin\AdminController::class, 'saveupdatehomeTypes'])->name('hometypes.update.save');
 
 
+// delete home types
+
+Route::get('/admin/hometypes/delete/{id}', [App\Http\Controllers\Admin\AdminController::class, 'deletehomeTypes'])->name('admin.hometypes.delete');
+
+// requests to admin
+Route::get('/admin/allrequests', [App\Http\Controllers\Admin\AdminController::class, 'requestsAdmin'])->name('admin.requests');
+
+
 });
