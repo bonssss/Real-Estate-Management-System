@@ -33,7 +33,7 @@
                             <a class="nav-link" href="{{route('admin.hometypes')}}">Home Types</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Properties</a>
+                            <a class="nav-link" href="{{route('admin.properties')}}">Properties</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.requests')}}">Requests</a>
