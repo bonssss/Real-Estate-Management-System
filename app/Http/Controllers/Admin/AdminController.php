@@ -314,7 +314,17 @@ class AdminController extends Controller
         }
         $propertydelete->delete();
 
+$deleteimages = PropertyImage::where("prop_id",$id)->get();
+   foreach($deleteimages as $delete)
+   {
+    if(File::exists(public_path('assets/postimages/' . $delete->image))){
+        File::delete(public_path('assets/postimages/' . $delete->image));
+    }else{
+        //dd('File does not exists.');
+    }
 
+    $delete->delete();
+   }
         if ($propertydelete) {
             return redirect('/admin/allproperties')->with('delete', 'Property type  deleted successfully.');
         }
