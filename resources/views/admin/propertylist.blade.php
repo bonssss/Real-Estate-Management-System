@@ -11,9 +11,15 @@
                     <p>{!! \Session::get('success') !!}</p>
                 </div>
                 @endif
+
+                @if (\Session::has('images'))
+                <div class="alert alert-success">
+                    <p>{!! \Session::get('images') !!}</p>
+                </div>
+                @endif
           <h5 class="card-title mb-4 d-inline">Properties</h5>
           <a href="{{route('admin.properties.create')}}" class="btn btn-primary mb-4 text-center float-right ">Create Properties</a>
-          <a href="create-Gallery.html" class="btn btn-primary mb-4 text-center float-right mr-5">Create Gallery</a>
+          <a href="{{route('admin.images.create')}}" class="btn btn-primary mb-4 text-center float-right mr-5">Create Gallery</a>
 
           <table class="table mt-4">
             <thead>

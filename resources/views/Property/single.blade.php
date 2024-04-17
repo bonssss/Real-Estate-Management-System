@@ -7,7 +7,7 @@
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-10">
           <span class="d-inline-block text-white px-3 mb-3 property-offer-type rounded">Property Details of</span>
-          <h1 class="mb-2">625 S. Berendo St</h1>
+          <h1 class="mb-2">{{$singleProp->title}}</h1>
           <p class="mb-5"><strong class="h2 text-success font-weight-bold">{{$singleProp->price}}</strong></p>
         </div>
       </div>
@@ -40,7 +40,7 @@
               <div><img src="{{asset('assets/images/'.$propimages->image.'')}}" alt="Image" class="img-fluid"></div>
 
               @endforeach
-             
+
             </div>
           </div>
           <div class="bg-white property-body border-bottom border-left border-right">
@@ -53,17 +53,17 @@
                 <li>
                   <span class="property-specs">Beds</span>
                   <span class="property-specs-number">{{$singleProp->beds}}<sup>+</sup></span>
-                  
+
                 </li>
                 <li>
                   <span class="property-specs">Baths</span>
                   <span class="property-specs-number">{{$singleProp->baths}}</span>
-                  
+
                 </li>
                 <li>
                   <span class="property-specs">SQ FT</span>
                   <span class="property-specs-number">{{ $singleProp->{'sq/ft'} }}</span>
-                  
+
                 </li>
               </ul>
               </div>
@@ -88,15 +88,27 @@
               <div class="col-12">
                 <h2 class="h4 text-black mb-3">Gallery</h2>
               </div>
-              
+
                 @foreach ($propertyimages as $propimages )
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                <a href="{{asset('assets/images/'.$propimages->image.'')}}" class="image-popup gal-item"><img src="{{asset('assets/images/'.$propimages->image.'')}}" alt="Image" class="img-fluid"></a>
+               {{-- Check if the image exists in 'assets/images/' --}}
+@if (file_exists(public_path('assets/images/' . $propimages->image)))
+{{-- Use 'assets/images/' path if the image exists --}}
+<a href="{{ asset('assets/images/' . $propimages->image) }}" class="image-popup gal-item">
+    <img src="{{ asset('assets/images/' . $propimages->image) }}" alt="Image" class="img-fluid">
+</a>
+@else
+{{-- Use 'assets/postimages/' path as fallback if the image does not exist in 'assets/images/' --}}
+<a href="{{ asset('assets/postimages/' . $propimages->image) }}" class="image-popup gal-item">
+    <img src="{{ asset('assets/postimages/' . $propimages->image) }}" alt="Image" class="img-fluid">
+</a>
+@endif
+
               </div>
                 @endforeach
-                  
-             
-        
+
+
+
             </div>
           </div>
         </div>
@@ -107,12 +119,12 @@
             <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
               @if(isset(Auth::user()->id))
 
-                  
+
             @if ($formvalidation >0)
-            
+
               <p class="alert alert-success"> You already sent request</p>
-            
-              
+
+
             @else
             <form action="{{route('insert.request',$singleProp->id)}}" method="POST" class="form-contact-agent">
               @csrf
@@ -123,7 +135,7 @@
               <div class="form-group">
                 <input type="hidden"  name="agent_name" value="{{$singleProp->agent_name}}" id="name" class="form-control">
               </div>
-              
+
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" class="form-control">
@@ -134,7 +146,7 @@
               <span class="text-danger" role="alert">
                 <strong>{{$message}}</strong>
               </span>
-                
+
               @enderror
               <div class="form-group">
                 <label for="email">Email</label>
@@ -144,7 +156,7 @@
               <span class="text-danger" role="alert">
                 <strong>{{$message}}</strong>
               </span>
-                
+
               @enderror
               <div class="form-group">
                 <label for="phone">Phone</label>
@@ -154,20 +166,20 @@
               <span class="text-danger" role="alert">
                 <strong>{{$message}}</strong>
               </span>
-                
+
               @enderror
               <div class="form-group">
                 <input type="submit" name="submit" id="phone" class="btn btn-primary" value="Send request">
               </div>
             </form>
             @endif
-          
+
             @else
             <p  class="alert alert-warning" >Log in to send request</p>
-            
+
           @endif
           </div>
-        
+
 
 
           <div class="bg-white widget border rounded">
@@ -176,10 +188,10 @@
             @if(isset(Auth::user()->id))
 
             @if ($favoritevalidation >0)
-            
+
               <p class="alert alert-success"> You already saved the property</p>
-            
-              
+
+
             @else
             <form action="{{ route('save.favorite', $singleProp->id) }}" method="POST" class="form-contact-agent">
               @csrf
@@ -191,17 +203,17 @@
               <div class="form-group">
                 <input type="hidden"  name="title" value="{{$singleProp->title}}" id="name" class="form-control">
               </div>
-              
+
               <div class="form-group">
                 <input type="hidden"  value="{{$singleProp->image}}" name="image" id="name" class="form-control">
 
 
               </div>
-              
+
               <div class="form-group">
                 <input type="hidden" value="{{$singleProp->location}}" name="location" id="location" class="form-control">
               </div>
-            
+
               <div class="form-group">
                 <input type="hidden" value="{{$singleProp->price}}" name="price" id="phone" class="form-control">
               </div>
@@ -211,13 +223,13 @@
               </div>
             </form>
             @endif
-          
+
           @else
             <p class="alert alert-warning">Login to save to favorite</p>
-          
+
 
           @endif
-          
+
           </div>
 
           <div class="bg-white widget border rounded">
@@ -225,12 +237,12 @@
                 <div class="px-3" style="margin-left: -15px;">
                   <a href="https://www.facebook.com/sharer/sharer.php?u=&quote=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
                   <a  href="https://twitter.com/intent/tweet?text=&url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>    
-                </div>            
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                </div>
           </div>
 
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -245,7 +257,7 @@
           </div>
         </div>
       </div>
-    
+
       <div class="row mb-5">
         @if ($relatedProperties->count()>0)
         @foreach ($relatedProperties as $relatedprop )
@@ -267,17 +279,17 @@
                 <li>
                   <span class="property-specs">Beds</span>
                   <span class="property-specs-number">{{$relatedprop->beds}}+</sup></span>
-                  
+
                 </li>
                 <li>
                   <span class="property-specs">Baths</span>
                   <span class="property-specs-number">{{$relatedprop->baths}}</span>
-                  
+
                 </li>
                 <li>
                   <span class="property-specs">SQ FT</span>
                   <span class="property-specs-number"> {{$relatedprop->{'sq/ft'} }}</span>
-                  
+
                 </li>
               </ul>
 
@@ -285,15 +297,15 @@
           </div>
         </div>
         @endforeach
-       
-        @else
-          
-       <p class="alert alert-success">No related property is found</p>
-          
-        @endif
-       
 
-        
+        @else
+
+       <p class="alert alert-success">No related property is found</p>
+
+        @endif
+
+
+
       </div>
     </div>
 

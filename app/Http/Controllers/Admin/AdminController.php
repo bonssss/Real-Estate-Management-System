@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Admin;
 use App\Models\Agent\Agent;
 use App\Models\Property\Property;
+use App\Models\Property\PropertyImage;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Requests;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -212,6 +214,87 @@ if($saveproperties){
     }
 }
 
+
+
+// create post images
+public function  createimagespost()
+{
+    return view('admin.postimagescreate');
+}
+
+
+
+public function saveimagespost(Request $request)
+{
+    // Validate the request data
+    $request->validate([
+        'image' => 'required|array', // 'image' field must be present and an array
+        'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image file
+        'prop_id' => 'required|integer', // 'prop_id' must be present and an integer
+    ]);
+
+    // Process uploaded files
+    if ($request->hasFile('image')) {
+        $files = $request->file('image');
+
+        foreach ($files as $file) {
+            // Generate a unique filename
+            $name = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // Store the file in the specified directory
+            $savepath = public_path('assets/postimages/');
+            $file->move($savepath, $name);
+
+            // Create a new PropertyImage record
+            PropertyImage::create([
+                'image' => $name,
+                'prop_id' => $request->prop_id,
+            ]);
+        }
+
+        // Redirect back with success message if files were processed successfully
+        return redirect('/admin/allproperties')->with('success', 'Images uploaded successfully.');
+    }
+
+    // Handle case when no files were uploaded (shouldn't reach here with required validation)
+    return redirect('/admin/allproperties')->with('error', 'No images uploaded.');
+}
+
+// public function  saveimagespost(Request $request)
+//     {
+//     //     $this->validate($request, [
+//     //         'filenames' => 'required',
+//     //         'filenames.*' => 'image'
+//     // ]);
+
+//     $files = [];
+//     if($request->hasfile('image'))
+//      {
+//         foreach($request->file('image ') as $file)
+//         {
+//             $savepath= "assets/postimages/";
+//             $name = time().rand(1,50).'.'.$file->extension();
+//             $file->move(public_path($savepath), $name);
+//             $files[] = $name;
+
+//             PropertyImage::create([
+//                 "prop_id"=> $request->prop_id,
+
+//                 "image"=>$name,
+
+
+//             ]);
+//         }
+//      }
+
+//     //  $file= new File();
+//     //  $file->filenames = $files;
+//     //  $file->save();
+
+
+//     if($name){
+//         return redirect('/admin/allproperties')->with('images', 'Images  created successfully.');
+//     }    }
 
 
 
