@@ -155,6 +155,65 @@ public function  deletehomeTypes($id)
         return view('admin.allrequests', compact('allrequests'));
     }
 
+    /// properties
+    public function  Properties()
+    {
+        $allproperty= Property::select()->get();
+        return view('admin.propertylist', compact('allproperty'));
+    }
+
+    //create property
+    public function  createProperties()
+    {
+        return view('admin.propertycreate');
+    }
+
+
+    public function  savecreateProperties (Request $request)
+    {
+
+
+        // Request()->validate([
+        //     "propstype"=> "required|max:50"
+        // ]);
+        $destinationPath = 'assets/images/';
+        $myimage = $request->image->getClientOriginalName();
+        $request->image->move(public_path($destinationPath), $myimage);
+
+
+
+
+       $saveproperties = Property::create([
+        'title' => $request->title,
+        'price' => $request->price,
+        'image' => $myimage,
+        'beds' => $request->beds,
+        'baths' => $request->baths,
+        'sq/ft' => $request->{'sq/ft'},
+        'year_built' => $request->year_built,
+        'price/sqft' => $request->{'price/sqft'},
+
+        'location' => $request->location,
+        'home_type' => $request->home_type,
+        'type' => $request->type,
+        'city' => $request->city,
+        'more_info' => $request->more_info,
+
+        'agent_name' => $request->agent_name,
+
+
+
+
+       ]);
+
+
+if($saveproperties){
+        return redirect('/admin/allproperties')->with('success', 'Property  created successfully.');
+    }
+}
+
+
+
 
 }
 
