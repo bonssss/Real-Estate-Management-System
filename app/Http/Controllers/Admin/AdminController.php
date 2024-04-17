@@ -180,6 +180,9 @@ public function  deletehomeTypes($id)
         $myimage = $request->image->getClientOriginalName();
         $request->image->move(public_path($destinationPath), $myimage);
 
+
+
+
        $saveproperties = Property::create([
         'title' => $request->title,
         'price' => $request->price,
@@ -189,6 +192,8 @@ public function  deletehomeTypes($id)
         'sq/ft' => $request->{'sq/ft'},
         'year_built' => $request->year_built,
         'price/sqft' => $request->{'price/sqft'},
+
+        'location' => $request->location,
         'home_type' => $request->home_type,
         'type' => $request->type,
         'city' => $request->city,

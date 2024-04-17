@@ -22,7 +22,7 @@ class Property extends Model
         'year_built',
         'price/sqft',
         'more_info',
-        'loaction',
+        'location',
         'agent_name',
         'city',
         'type'
