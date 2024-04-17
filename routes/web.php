@@ -110,6 +110,7 @@ Route::get('/admin/allrequests', [App\Http\Controllers\Admin\AdminController::cl
 Route::get('/admin/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('admin.properties');
 Route::get('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'createProperties'])->name('admin.properties.create');
 Route::post('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'savecreateProperties'])->name('admin.properties.save');
+Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteProperties'])->name('admin.properties.delete');
 
 // images posts
 

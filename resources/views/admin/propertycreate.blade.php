@@ -44,23 +44,21 @@
 
                     <select name="home_type" class="form-control form-select" aria-label="Default select example">
                         <option selected>Select Home Type</option>
-                        <option value="Condo">Condo</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Land">Land</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Mixed Use">Mixed Use</option>
                     </select>
                     <select name="type" class="form-control mt-3 mb-4 form-select" aria-label="Default select example">
                         <option selected>Select Type</option>
                         <option value="Buy">For Buy</option>
                         <option value="Rent">For Rent</option>
-                        <option value="Lease">For Lease</option>
                     </select>
                     <select name="city" class="form-control mt-3 mb-4 form-select" aria-label="Default select example">
                       <option selected>Select City</option>
-                      <option value="New York">Adama</option>
-                      <option value="Brooklyn">Addis Ababa</option>
-                      <option value="London">London</option>
-                      <option value="Tokyo">Tokyo</option>
-                      <option value="Cairo">Cairo</option>
+                      <option value="Adama">Adama</option>
+                      <option value="Addis Ababa">Addis Ababa</option>
+                      <option value="Mexico">Mexico</option>
+
                   </select>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">More Info</label>
