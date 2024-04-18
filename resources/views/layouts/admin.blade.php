@@ -27,7 +27,7 @@
                             <a class="nav-link text-white" href="{{route('admin.dashboard')}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.agents.create')}}">Agents</a>
+                            <a class="nav-link" href="{{route('admin.agents.list')}}">Agents</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.hometypes')}}">Home Types</a>

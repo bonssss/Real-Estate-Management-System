@@ -83,8 +83,10 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth:admin'],function(){
 // create agent
 
 Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/agents', [App\Http\Controllers\Admin\AdminController::class, 'showAgentlist'])->name('admin.agents.list');
+
     Route::get('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'showCreateAgentForm'])->name('admin.agents.create');
-    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.create.agent');
+    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.save.agent');
 // create home type and list
     Route::get('/admin/allhometypes', [App\Http\Controllers\Admin\AdminController::class, 'homeTypes'])->name('admin.hometypes');
     Route::get('/admin/hometypes/create', [App\Http\Controllers\Admin\AdminController::class, 'createhomeTypes'])->name('admin.hometypes.create');
@@ -118,3 +120,7 @@ Route::get('/admin/images/create', [App\Http\Controllers\Admin\AdminController::
 Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'saveimagespost'])->name('admin.images.save');
 
 });
+
+
+
+// agent
