@@ -221,8 +221,10 @@ class AdminController extends Controller
 
     // create post images
     public function  createimagespost()
+
     {
-        return view('admin.postimagescreate');
+        $allpropert =Property::all();
+        return view('admin.postimagescreate', compact('allpropert'));
     }
 
 

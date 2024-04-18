@@ -16,9 +16,11 @@
                         <select name="prop_id" class="form-control mt-3 mb-4 form-select"
                             aria-label="Default select example">
                             <option selected>Select Property</option>
-                            <option value="1">Residential</option>
-                            <option value="2">Mixed use</option>
-                            <option value="3">Apartama</option>
+                            @foreach ( $allpropert as $allprop )
+                            <option value="{{$allprop->id}}">{{$allprop->title}}</option>
+
+                            @endforeach
+
                         </select>
                         <!-- Submit button -->
                         <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
