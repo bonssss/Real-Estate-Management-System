@@ -13,13 +13,27 @@ class AgentController extends Controller
 
         return View('agent.loginpage');
     }
+    public function agentlogin(Request $request)
+    {
+        $remember_me = $request->has('remember_me') ? true : false;
+
+        if (auth()->guard('agent')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
+
+            return redirect()->route('view.agent.dashboard');
+        }
+        return redirect()->back()->with(['error' => 'error logging in']);
+
+    }
 
 
-    // public function viewagentdashboard()
-    // {
 
-    //     return View('layouts.dashboard');
-    // }
+
+
+    public function viewagentdashboard()
+    {
+
+        return View('agent.dashboard');
+    }
 
 
 }

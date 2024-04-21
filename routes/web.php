@@ -135,6 +135,7 @@ Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController:
 
 Route::get('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'viewagentlogin'])->name('view.agent.login');
 
+Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'agentlogin'])->name('save.agent.login');
 
-// Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
+Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
 

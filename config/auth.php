@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -46,6 +46,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
     ],
 
     /*
@@ -75,6 +79,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Admin\Admin::class),
+        ],
+
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Agent\Agent::class),
         ],
         // 'users' => [
         //     'driver' => 'database',
