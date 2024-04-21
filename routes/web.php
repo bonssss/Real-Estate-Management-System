@@ -8,6 +8,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// change password
+
+Route::get('/change-password', [App\Http\Controllers\Users\UsersController::class, 'showChangePasswordForm'])->name('change.password');
+
+// Route to process the password change request
+Route::post('/change-password', [App\Http\Controllers\Users\UsersController::class, 'changePassword'])->name('change.password.post');
+
 Route::get('/home', [App\Http\Controllers\Property\PropertyController::class, 'index'])->name('home');
 
 Route::get('props/property-details/{id}', [App\Http\Controllers\Property\PropertyController::class, 'single'])->name('single.prop');
@@ -83,8 +90,10 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth:admin'],function(){
 // create agent
 
 Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/agents', [App\Http\Controllers\Admin\AdminController::class, 'showAgentlist'])->name('admin.agents.list');
+
     Route::get('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'showCreateAgentForm'])->name('admin.agents.create');
-    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.create.agent');
+    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.save.agent');
 // create home type and list
     Route::get('/admin/allhometypes', [App\Http\Controllers\Admin\AdminController::class, 'homeTypes'])->name('admin.hometypes');
     Route::get('/admin/hometypes/create', [App\Http\Controllers\Admin\AdminController::class, 'createhomeTypes'])->name('admin.hometypes.create');
@@ -118,3 +127,15 @@ Route::get('/admin/images/create', [App\Http\Controllers\Admin\AdminController::
 Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'saveimagespost'])->name('admin.images.save');
 
 });
+
+
+
+// agent
+
+
+Route::get('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'viewagentlogin'])->name('view.agent.login');
+
+Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'agentlogin'])->name('save.agent.login');
+
+Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
+

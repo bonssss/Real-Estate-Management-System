@@ -27,7 +27,7 @@ class UsersController extends Controller
               'property' => $property,
           ];
       });
-  
+
       return view('users.userrequests', compact('requestsWithDetails'));
   }
 
@@ -50,4 +50,11 @@ class UsersController extends Controller
     return View('users.userfavorite', compact('FavoriteWithDetails'));
 
   }
+
+
+
+
+
+
+  //
 }

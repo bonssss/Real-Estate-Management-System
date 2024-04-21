@@ -22,6 +22,7 @@ class PropertyController extends Controller
     return view('home', compact('Props'));
 }
 
+
 // property details
 
 public function single($id){
@@ -39,21 +40,21 @@ public function single($id){
       $formvalidation = Requests::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
 
 
-      //  validating  sending favorite items 
+      //  validating  sending favorite items
       $favoritevalidation = Favorite::where('prop_id',$id)->where('user_id',Auth::user()->id)->count();
-  
-  
-  
+
+
+
       return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation','favoritevalidation'));
-  
-      
-    
+
+
+
    }else
    {
     return view('Property.single', compact('singleProp','propertyimages','relatedProperties'));
 
    }
-  
+
 }
 
 
@@ -85,7 +86,7 @@ public function sendRequest(Request $request){
 
 
   echo "request sent successfully";
- 
+
 
   // return view('home', compact('Props'));
 }
@@ -95,13 +96,13 @@ public function sendRequest(Request $request){
 
 public function FavoriteList(Request $request){
 
- 
+
 
   $saveFavorite =Favorite::create([
 
     "prop_id"=> $request->prop_id,
     "user_id"=> Auth::user()->id,
-    "title"=> $request->title, 
+    "title"=> $request->title,
     "image"=> $request->image,
     "location"=> $request->location,
     "price"=> $request->price,
@@ -179,6 +180,6 @@ public function searchproperty(Request $request){
 
   return view('Property.searchprops',compact('seachesprop'));
 }
-} 
+}
 
 

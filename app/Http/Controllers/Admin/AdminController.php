@@ -11,6 +11,8 @@ use App\Models\Property\Requests;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class AdminController extends Controller
@@ -44,6 +46,15 @@ class AdminController extends Controller
         return View('admin.index', compact('adminCount', 'propertyCount', 'homeCount', 'buyCount'));
     }
 
+    public function  showAgentlist()
+    {
+        $allagents = Agent::select()->get();
+        // $allproperytypes = PropertyType::select()->get();
+
+
+        return View('admin.agentlist',compact('allagents'));
+    }
+
 
 
 
@@ -53,23 +64,75 @@ class AdminController extends Controller
         return view('admin.createagent');
     }
 
+
     public function createAgent(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:agents,email',
-            'password' => 'required|string|min:8',
-        ]);
+{
+    // Validate incoming request data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:agents,email',
+        'password' => 'required|min:6',
+        'address' => 'nullable|string|max:255',
+        'birth_date' => 'nullable|date',
+        'phone_number' => 'nullable|string|max:20',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        // Create new agent
-        $agent = new Agent();
-        $agent->name = $validatedData['name'];
-        $agent->email = $validatedData['email'];
-        $agent->password = bcrypt($validatedData['password']);
-        $agent->save();
-
-        return redirect()->route('admin.agents')->with('success', 'Agent created successfully.');
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $destinationPath = public_path('assets/agents');
+        $image->move($destinationPath, $imageName);
+        $imagePath = 'assets/agents/' . $imageName;
+    } else {
+        $imagePath = null;
     }
+
+    // Create new agent record using Eloquent
+    $agent = Agent::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password), // Hash the password securely
+        'address' => $request->address,
+        'birth_date' => $request->birth_date,
+        'phone_number' => $request->phone_number,
+        'image' => $imagePath, // Store image path in the database
+    ]);
+
+    if ($agent) {
+        // Agent created successfully
+        return redirect('/admin/agents')->with('success', 'Agent type created successfully.');
+    } else {
+        // Failed to create agent
+        return back()->withInput()->with('error', 'Failed to create agent.');
+    }
+}
+//     public function createAgent(Request $request)
+// {
+//     $destinationPath = 'assets/agents/';
+//         // $myimage = $request->image->getClientOriginalName();
+//         // $request->image->move(public_path($destinationPath), $myimage);
+
+
+
+
+//         $saveproperties = Agent::create([
+//             'name' => $request->name,
+//             'email' => $request->email,
+//             'password' => $request->password,
+//             'address' => $request->address,
+//             'birth_date'=> $request->birth_date,
+//             'phone_number' => $request->phone_number,
+//             'image' => $destinationPath,
+
+//         ]);
+
+
+// if ($saveproperties){
+//     return redirect()->route('admin.agentlist')->with('success', 'Agent created successfully!');
+// }
+// }
 
 
 

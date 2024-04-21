@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     {{-- imported css files  --}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
     <link rel="stylesheet" href="{{asset('assets/fonts/icomoon/style.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('assets/fonts/flaticon/font/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/fl-bigmug-line.css')}}">
-    
-  
+
+
     <link rel="stylesheet" href="{{asset('assets/css/aos.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
@@ -99,9 +99,9 @@
                 </div>
                 <div class="col-4 col-md-4 col-lg-8">
                   <nav class="site-navigation text-right text-md-right" role="navigation">
-    
+
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-    
+
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                       <li class="active">
                         <a href="{{ url('/home') }}">Home</a>
@@ -115,7 +115,7 @@
                           <li><a href="{{route('proptype.prop',$propstype->propstype)}}">{{$propstype->propstype}}</a></li>
 
                           @endforeach
-                         
+
                         </ul>
                       </li>
                       <li><a href="{{route('about')}}">About</a></li>
@@ -142,12 +142,12 @@
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('user.requests') }}">
-                                      
+
                                        My Requests
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('user.favoriets') }}">
-                                      
+
                                       My Favorites
                                    </a>
 
@@ -159,21 +159,21 @@
                             </li>
                         @endguest
 
-                      
-                      
+
+
 
                     </ul>
                   </nav>
                 </div>
-               
-    
+
+
               </div>
             </div>
           </div>
         </div>
 
 
-    
+
 
         <main class="py-4">
             @yield('content')
@@ -189,12 +189,12 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="mb-5">
-            <h3 class="footer-heading mb-4">About Homeland</h3>
+            <h3 class="footer-heading mb-4">About Hiya</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
           </div>
 
-          
-          
+
+
         </div>
         <div class="col-lg-4 mb-5 mb-lg-0">
           <div class="row mb-5">
@@ -203,17 +203,16 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <ul class="list-unstyled">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Buy</a></li>
-                <li><a href="#">Rent</a></li>
-                <li><a href="#">Properties</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{route('buy.prop')}}">Buy</a></li>
+                <li><a href="{{route('rent.prop')}}">Rent</a></li>
               </ul>
             </div>
             <div class="col-md-6 col-lg-6">
               <ul class="list-unstyled">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{{route('about')}}">About Us</a></li>
+                {{-- <li><a href="#">Privacy Policy</a></li> --}}
+                <li><a href="{{route('contact')}}">Contact Us</a></li>
                 <li><a href="#">Terms</a></li>
               </ul>
             </div>
@@ -232,20 +231,20 @@
                 <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
               </div>
 
-          
+
 
         </div>
-        
+
       </div>
       <div class="row pt-5 mt-5 text-center">
         <div class="col-md-12">
           <p>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by FYP
+          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved by FYP
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </p>
         </div>
-        
+
       </div>
     </div>
   </footer>
