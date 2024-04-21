@@ -58,6 +58,7 @@ class AdminController extends Controller
 
 
 
+
     public function showCreateAgentForm()
     {
         return view('admin.createagent');

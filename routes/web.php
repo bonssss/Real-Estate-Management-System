@@ -8,6 +8,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// change password
+
+Route::get('/change-password', [App\Http\Controllers\Users\UsersController::class, 'showChangePasswordForm'])->name('change.password');
+
+// Route to process the password change request
+Route::post('/change-password', [App\Http\Controllers\Users\UsersController::class, 'changePassword'])->name('change.password.post');
+
 Route::get('/home', [App\Http\Controllers\Property\PropertyController::class, 'index'])->name('home');
 
 Route::get('props/property-details/{id}', [App\Http\Controllers\Property\PropertyController::class, 'single'])->name('single.prop');
@@ -124,3 +131,10 @@ Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController:
 
 
 // agent
+
+
+Route::get('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'viewagentlogin'])->name('view.agent.login');
+
+
+// Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
+
