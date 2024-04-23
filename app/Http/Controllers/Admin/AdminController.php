@@ -38,12 +38,14 @@ class AdminController extends Controller
 
     public function adminDashboard()
     {
-        $adminCount = Admin::select()->count();
+        $requestCount = Requests::select()->count();
+
+        $agentCount = Agent::select()->count();
         $propertyCount = Property::select()->count();
         $homeCount = PropertyType::select()->count();
         $buyCount = Property::select()->where('type', 'Buy')->count();
 
-        return View('admin.index', compact('adminCount', 'propertyCount', 'homeCount', 'buyCount'));
+        return View('admin.index', compact('agentCount', 'propertyCount', 'homeCount', 'buyCount','requestCount'));
     }
 
     public function  showAgentlist()
