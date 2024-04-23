@@ -19,10 +19,11 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
+                            <i class="fas fa-home"></i>
                         </span>
-                        <span class="title">Brand Name</span>
+                        <span class="title">Hiya Logo</span>
                     </a>
+
                 </li>
 
                 <li>
@@ -109,8 +110,12 @@
                 </div>
             </div>
 
+            <main class="py-4">
+                @yield('content')
+            </main>
+
             <!-- ======================= Cards ================== -->
-            <div class="cardBox">
+            {{-- <div class="cardBox">
                 <div class="card">
                     <div>
                         <div class="numbers">1,504</div>
@@ -319,7 +324,7 @@
                         </tr>
                     </table> --}}
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
