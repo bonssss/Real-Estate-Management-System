@@ -139,3 +139,4 @@ Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 
 
 Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
 
+Route::get('/agent/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('agent.properties');

@@ -40,7 +40,7 @@
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
-                        <span class="title">Customers</span>
+                        <span class="title">Properties</span>
                     </a>
                 </li>
 
@@ -49,11 +49,11 @@
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
+                        <span class="title">Requests</span>
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
@@ -87,7 +87,7 @@
                         </span>
                         <span class="title">Sign Out</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
 

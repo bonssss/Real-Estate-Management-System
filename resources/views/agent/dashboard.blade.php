@@ -4,8 +4,8 @@
     <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="numbers">{{$propertyCount}}</div>
+                        <div class="cardName">Properties</div>
                     </div>
 
                     <div class="iconBx">
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Requests</div>
                     </div>
 
                     <div class="iconBx">

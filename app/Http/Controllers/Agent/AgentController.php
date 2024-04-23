@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
+use App\Models\Property\Property;
 use Illuminate\Http\Request;
 
 class AgentController extends Controller
@@ -30,10 +31,15 @@ class AgentController extends Controller
 
 
     public function viewagentdashboard()
-    {
 
-        return View('agent.dashboard');
+    {
+        $propertyCount = Property::select()->count();
+
+
+        return View('agent.dashboard',compact('propertyCount'));
     }
+
+
 
 
 }
