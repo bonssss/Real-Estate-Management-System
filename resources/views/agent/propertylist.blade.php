@@ -23,7 +23,7 @@
                         </div>
                     @endif
                     <h5 class="card-title mb-4 d-inline">Properties</h5>
-                    <a href="{{ route('admin.properties.create') }}"
+                    <a href="{{ route('agent.properties.create') }}"
                         class="btn btn-primary mb-4 text-center float-right ">Create Properties</a>
                     <a href="{{ route('admin.images.create') }}"
                         class="btn btn-primary mb-4 text-center float-right mr-5">Create Gallery</a>
