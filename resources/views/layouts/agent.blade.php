@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('view.agent.dashboard')}}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -36,7 +36,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('agent.properties')}}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -45,7 +45,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('agent.requests')}}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>

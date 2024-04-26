@@ -140,3 +140,17 @@ Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 
 Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
 
 Route::get('/agent/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('agent.properties');
+
+
+// request  sent to agent
+
+Route::get('/agent/allrequests', [App\Http\Controllers\Agent\AgentController::class, 'requestsAgent'])->name('agent.requests');
+
+// properties agents created
+
+Route::get('/agent/allproperties', [App\Http\Controllers\Agent\AgentController::class, 'Properties'])->name('agent.properties');
+Route::get('/agent/properties/create', [App\Http\Controllers\Agent\AgentController::class, 'createProperties'])->name('agent.properties.create');
+Route::post('/agent/properties/create', [App\Http\Controllers\Agent\AgentController::class, 'savecreateProperties'])->name('agent.properties.save');
+// Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Agent\AgentController::class, 'deleteProperties'])->name('admin.properties.delete');
+
+
