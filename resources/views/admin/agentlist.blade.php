@@ -11,7 +11,11 @@
                         </div>
                     @endif
 
-
+                    @if (\Session::has('delete'))
+                    <div class="alert alert-success">
+                        <p>{!! \Session::get('delete') !!}</p>
+                    </div>
+                @endif
 
 
                     <h5 class="card-title mb-4 d-inline">Agents</h5>
@@ -44,7 +48,7 @@
                                     <td>
                                         {{-- <button onclick="confirmDelete({{ $allprops->id }})" class="btn btn-danger text-center">Delete</button> --}}
 
-                                        <a href="{{ route('admin.properties.delete',$allagent->id) }}" class="btn btn-danger text-center" onclick="return confirmDelete();">Delete</a>
+                                        <a href="{{ route('admin.agent.delete',$allagent->id) }}" class="btn btn-danger text-center" onclick="return confirmDelete();">Delete</a>
                                     </tr>
                             @endforeach
 

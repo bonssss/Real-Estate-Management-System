@@ -121,6 +121,8 @@ Route::get('/admin/properties/create', [App\Http\Controllers\Admin\AdminControll
 Route::post('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'savecreateProperties'])->name('admin.properties.save');
 Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteProperties'])->name('admin.properties.delete');
 
+Route::get('/admin/agent/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteAgent'])->name('admin.agent.delete');
+
 // images posts
 
 Route::get('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'createimagespost'])->name('admin.images.create');

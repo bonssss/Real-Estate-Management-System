@@ -110,6 +110,19 @@ class AdminController extends Controller
         return back()->withInput()->with('error', 'Failed to create agent.');
     }
 }
+
+
+public function  deleteAgent($id)
+    {
+
+        $agentdelete = Agent::find($id);
+        $agentdelete->delete();
+
+
+        if ($agentdelete) {
+            return redirect('/admin/agents')->with('delete', 'Agent  deleted successfully.');
+        }
+    }
 //     public function createAgent(Request $request)
 // {
 //     $destinationPath = 'assets/agents/';
