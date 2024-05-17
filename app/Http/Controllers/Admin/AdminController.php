@@ -67,10 +67,53 @@ class AdminController extends Controller
     }
 
 
-    public function createAgent(Request $request)
+//     public function createAgent(Request $request)
+// {
+//     // Validate incoming request data
+//     $request->validate([
+//         'name' => 'required|string|max:255',
+//         'email' => 'required|email|unique:agents,email',
+//         'password' => 'required|min:6',
+//         'address' => 'nullable|string|max:255',
+//         'birth_date' => 'nullable|date',
+//         'phone_number' => 'nullable|string|max:20',
+//         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+//     ]);
+
+//     // Handle image upload
+//     if ($request->hasFile('image')) {
+//         $image = $request->file('image');
+//         $imageName = time() . '_' . $image->getClientOriginalName();
+//         $destinationPath = public_path('assets/agents');
+//         $image->move($destinationPath, $imageName);
+//         $imagePath = 'assets/agents/' . $imageName;
+//     } else {
+//         $imagePath = null;
+//     }
+
+//     // Create new agent record using Eloquent
+//     $agent = Agent::create([
+//         'name' => $request->name,
+//         'email' => $request->email,
+//         'password' => Hash::make($request->password), // Hash the password securely
+//         'address' => $request->address,
+//         'birth_date' => $request->birth_date,
+//         'phone_number' => $request->phone_number,
+//         'image' => $imagePath, // Store image path in the database
+//     ]);
+
+//     if ($agent) {
+//         // Agent created successfully
+//         return redirect('/admin/agents')->with('success', 'Agent created successfully.');
+//     } else {
+//         // Failed to create agent
+//         return back()->withInput()->with('error', 'Failed to create agent.');
+//     }
+// }
+public function createAgent(Request $request)
 {
     // Validate incoming request data
-    $request->validate([
+    $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:agents,email',
         'password' => 'required|min:6',
@@ -93,23 +136,24 @@ class AdminController extends Controller
 
     // Create new agent record using Eloquent
     $agent = Agent::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password), // Hash the password securely
-        'address' => $request->address,
-        'birth_date' => $request->birth_date,
-        'phone_number' => $request->phone_number,
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'password' => Hash::make($validatedData['password']), // Hash the password securely
+        'address' => $validatedData['address'],
+        'birth_date' => $validatedData['birth_date'],
+        'phone_number' => $validatedData['phone_number'],
         'image' => $imagePath, // Store image path in the database
     ]);
 
     if ($agent) {
         // Agent created successfully
-        return redirect('/admin/agents')->with('success', 'Agent type created successfully.');
+        return redirect('/admin/agents')->with('success', 'Agent created successfully.');
     } else {
         // Failed to create agent
         return back()->withInput()->with('error', 'Failed to create agent.');
     }
 }
+
 
 
 public function  deleteAgent($id)

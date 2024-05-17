@@ -8,6 +8,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+// send contact
+Route::post('/contact/submit', [App\Http\Controllers\Contact\ContactController::class, 'submit'])->name('contact.submit');
+
 // change password
 
 Route::get('/change-password', [App\Http\Controllers\Users\UsersController::class, 'showChangePasswordForm'])->name('change.password');
@@ -93,7 +97,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/agents', [App\Http\Controllers\Admin\AdminController::class, 'showAgentlist'])->name('admin.agents.list');
 
     Route::get('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'showCreateAgentForm'])->name('admin.agents.create');
-    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.save.agent');
+    Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.save.agents');
 // create home type and list
     Route::get('/admin/allhometypes', [App\Http\Controllers\Admin\AdminController::class, 'homeTypes'])->name('admin.hometypes');
     Route::get('/admin/hometypes/create', [App\Http\Controllers\Admin\AdminController::class, 'createhomeTypes'])->name('admin.hometypes.create');
@@ -156,3 +160,12 @@ Route::post('/agent/properties/create', [App\Http\Controllers\Agent\AgentControl
 // Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Agent\AgentController::class, 'deleteProperties'])->name('admin.properties.delete');
 
 
+
+
+// Owners
+
+
+Route::get('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerlogin'])->name('view.owner.login');
+
+Route::post('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'loginowner'])->name('save.owner.login');
+Route::get('/owner/dashboard', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerdashboard'])->name('view.owner.dashboard');

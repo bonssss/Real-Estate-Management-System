@@ -11,17 +11,23 @@
       </div>
     </div>
   </div>
-  
+
 
   <div class="site-section">
     <div class="container">
       <div class="row">
-     
+
+        @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <p>{!! \Session::get('success') !!}</p>
+        </div>
+    @endif
         <div class="col-md-12 col-lg-8 mb-5">
-        
-          
-        
-          <form action="#" class="p-5 bg-white border">
+
+
+
+          <form action="{{ route('contact.submit') }}"  method="POST" class="p-5 bg-white border">
+            @csrf
 
             <div class="row form-group">
               <div class="col-md-12 mb-3 mb-md-0">
@@ -41,11 +47,11 @@
                 <input type="text" id="subject" class="form-control" placeholder="Enter Subject">
               </div>
             </div>
-            
+
 
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="font-weight-bold" for="message">Message</label> 
+                <label class="font-weight-bold" for="message">Message</label>
                 <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us"></textarea>
               </div>
             </div>
@@ -64,16 +70,16 @@
           <div class="p-4 mb-3 bg-white">
             <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
             <p class="mb-0 font-weight-bold">Address</p>
-            <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+            <p class="mb-4">Rwanda St, Addis Ababa, Ethiopia</p>
 
             <p class="mb-0 font-weight-bold">Phone</p>
-            <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+            <p class="mb-4"><a href="#">098 351 5151</a></p>
 
             <p class="mb-0 font-weight-bold">Email Address</p>
-            <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+            <p class="mb-0"><a href="#">hiya@gmail.com</a></p>
 
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -150,7 +156,7 @@
           </div>
         </div>
 
-        
+
 
       </div>
   </div>
