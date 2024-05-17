@@ -73,5 +73,53 @@ public function  Properties()
         return view('agent.propertylist', compact('allproperty'));
     }
 
+    public function  createProperties()
+    {
+        return view('agent.createproperty');
+    }
+
+
+    public function  savecreateProperties(Request $request)
+    {
+
+
+        // Request()->validate([
+        //     "propstype"=> "required|max:50"
+        // ]);
+        $destinationPath = 'assets/images/';
+        $myimage = $request->image->getClientOriginalName();
+        $request->image->move(public_path($destinationPath), $myimage);
+
+
+
+
+        $saveproperties = Property::create([
+            'title' => $request->title,
+            'price' => $request->price,
+            'image' => $myimage,
+            'beds' => $request->beds,
+            'baths' => $request->baths,
+            'sq/ft' => $request->{'sq/ft'},
+            'year_built' => $request->year_built,
+            'price/sqft' => $request->{'price/sqft'},
+
+            'location' => $request->location,
+            'home_type' => $request->home_type,
+            'type' => $request->type,
+            'city' => $request->city,
+            'more_info' => $request->more_info,
+
+            'agent_name' => $request->agent_name,
+
+
+
+
+        ]);
+
+
+        if ($saveproperties) {
+            return redirect('/agent/allproperties')->with('success', 'Property  created successfully.');
+        }
+    }
 
 }

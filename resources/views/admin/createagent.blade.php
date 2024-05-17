@@ -28,7 +28,7 @@
 @section('content')
     <div class="container">
         <h1>Create New Agent</h1>
-        <form method="POST" action="{{ route('admin.save.agent') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.save.agents') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>

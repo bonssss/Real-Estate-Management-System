@@ -351,11 +351,21 @@ a:hover {
 }
 
 .site-footer a:hover {
-    color: white;
+    color: rgb(17, 24, 231);
+}
+.site-footer a span:hover {
+    color: rgb(17, 24, 231);
+    font-size: 25px;
+
 }
 
 .site-footer ul li {
     margin-bottom: 10px;
+}
+
+.site-footer ul li:hover {
+    font-size: 15px;
+
 }
 
 .site-footer .footer-heading {

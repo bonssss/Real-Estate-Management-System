@@ -249,6 +249,8 @@
       <div class="site-section bg-light">
         <div class="container">
           <div class="row mb-5 justify-content-center">
+
+
             <div class="col-md-7">
               <div class="site-section-title text-center">
                 <h2>Our Agents</h2>
@@ -260,7 +262,7 @@
               <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
                 <div class="team-member">
 
-                  <img src="{{asset('assets/images/person_1.jpg')}}" alt="Image" class="img-fluid rounded mb-4">
+                  <img src="{{asset('assets/agents/1713435383_person_3.jpg')}}" alt="Image" class="img-fluid rounded mb-4">
 
                   <div class="text">
 
