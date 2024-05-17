@@ -26,25 +26,25 @@
 
 
 
-          <form action="{{ route('contact.submit') }}"  method="POST" class="p-5 bg-white border">
+          <form action="{{ route('contacts.submit') }}"  method="POST" class="p-5 bg-white border">
             @csrf
 
             <div class="row form-group">
               <div class="col-md-12 mb-3 mb-md-0">
                 <label class="font-weight-bold" for="fullname">Full Name</label>
-                <input type="text" id="fullname" class="form-control" placeholder="Full Name">
+                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
                 <label class="font-weight-bold" for="email">Email</label>
-                <input type="email" id="email" class="form-control" placeholder="Email Address">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email Address">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
                 <label class="font-weight-bold" for="email">Subject</label>
-                <input type="text" id="subject" class="form-control" placeholder="Enter Subject">
+                <input type="text" id="subject" class="form-control" name="subject" placeholder="Enter Subject">
               </div>
             </div>
 

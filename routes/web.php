@@ -10,7 +10,7 @@ Auth::routes();
 
 
 // send contact
-Route::post('/contact/submit', [App\Http\Controllers\Contact\ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/contact/submit', [App\Http\Controllers\Contact\ContactController::class, 'submit'])->name('contacts.submit');
 
 // change password
 

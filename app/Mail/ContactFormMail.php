@@ -13,7 +13,7 @@ class ContactFormMail extends Mailable
     public $fullname;
     public $email;
     public $subject;
-    public $message;
+    public $messageContent;
 
     /**
      * Create a new message instance.
@@ -21,14 +21,14 @@ class ContactFormMail extends Mailable
      * @param string $fullname
      * @param string $email
      * @param string $subject
-     * @param string $message
+     * @param string $messageContent
      */
-    public function __construct($fullname, $email, $subject, $message)
+    public function __construct($fullname, $email, $subject, $messageContent)
     {
         $this->fullname = $fullname;
         $this->email = $email;
         $this->subject = $subject;
-        $this->message = $message;
+        $this->messageContent = $messageContent;
     }
 
     /**
@@ -40,6 +40,6 @@ class ContactFormMail extends Mailable
     {
         return $this->from(config('mail.from.address'))
                     ->subject('New Contact Form Submission')
-                    ->view('pages.contact');
+                    ->view('email.contact');
     }
 }
