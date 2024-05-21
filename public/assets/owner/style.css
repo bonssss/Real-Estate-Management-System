@@ -1,0 +1,142 @@
+/* Dashboard Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #010b14 !important;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+}
+
+.sidebar-container {
+    display: flex;
+}
+
+.sidebar {
+    position:relative;
+    width: 250px;
+    height: 100vh;
+    background-color: #2b7105;
+    color: #fff;
+    padding-top: 60px;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.sidebar-list li {
+    padding: 10px 20px;
+}
+
+.sidebar-list li a {
+    color: #fff;
+    text-decoration: none;
+}
+sidebar-list li a:hover {
+    background-color: #010b14;
+
+
+}
+
+.main-content {
+    padding: 20px;
+    flex: 1; /* Ensure main content takes remaining space */
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+
+/* Hide sidebar on small screens */
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+
+
+/* change password */
+
+.password-change-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.password-change-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-control.is-invalid {
+    border-color: #e3342f;
+}
+
+.error-message {
+    color: #e3342f;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
