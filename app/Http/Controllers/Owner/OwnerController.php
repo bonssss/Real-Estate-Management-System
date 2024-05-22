@@ -97,17 +97,19 @@ class OwnerController extends Controller
 
 public function ownercountDashboard()
 {
-    $requestCount = Requests::count();
-    $agentCount = Agent::count();
-    // $propertyCount = Property::count();
-        $propertyCount = 30;
+    $requestCount = Requests::select()->count();
+    $rentedCount = Property::select()->where('status','rented')->count();
+    $soldCount = Property::select()->where('status','sold')->count();
+    $processingCount = Property::select()->where('status','Processing')->count();
+    $rentCount =Property::select()->where('type', 'Rent')->count();
 
-    $homeCount = PropertyType::count();
-    $buyCount = Property::where('type', 'Buy')->count();
 
-    Log::info("Counts: ", [
-        'propertyCount'=>$propertyCount,
-    ]);
-    return view('owner.dashboard', compact( 'propertyCount', 'homeCount', 'buyCount', 'requestCount', 'rentedCount', 'vacantCount', 'tenantCount'));
+
+    $agentCount = Agent::select()->count();
+    $propertyCount = Property::select()->count();
+    $homeCount = PropertyType::select()->count();
+    $buyCount = Property::select()->where('type', 'Buy')->count();
+
+    return View('owner.dashboard', compact('agentCount','rentedCount','processingCount','soldCount', 'propertyCount', 'homeCount', 'buyCount','requestCount','rentCount'));
 }
 }

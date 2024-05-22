@@ -38,9 +38,9 @@
             <div class="card">
                 <div class="card-header">Properties</div>
                 <div class="card-body">
-                    <p>Total Properties: <span class="badge badge-primary">67</span></p>
-                    <p>Rented: <span class="badge badge-success">6</span></p>
-                    <p>Vacant: <span class="badge badge-danger">4</span></p>
+                    <p>Total Properties: <span class="badge badge-primary">{{$propertyCount}}</span></p>
+                    <p>Rented: <span class="badge badge-success">{{$rentedCount}}</span></p>
+                    <p>Sold: <span class="badge badge-danger">{{$soldCount}}</span></p>
                 </div>
             </div>
         </div>
