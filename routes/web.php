@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -7,7 +8,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+// update status
+Route::put('/properties/{id}/update-status', [App\Http\Controllers\Admin\AdminController::class, 'updateStatus'])->name('update.status');
 
 // send contact
 Route::post('/contact/submit', [App\Http\Controllers\Contact\ContactController::class, 'submit'])->name('contacts.submit');
@@ -38,26 +40,26 @@ Route::get('props/type/Buy', [App\Http\Controllers\Property\PropertyController::
 
 Route::get('props/type/Rent', [App\Http\Controllers\Property\PropertyController::class, 'PropertyRent'])->name('rent.prop');
 
- // route for property types
+// route for property types
 
- Route::get('props/hometype/{propstype}/', [App\Http\Controllers\Property\PropertyController::class, 'propType'])->name('proptype.prop');
+Route::get('props/hometype/{propstype}/', [App\Http\Controllers\Property\PropertyController::class, 'propType'])->name('proptype.prop');
 
 //contact
 
- Route::get('contact', [App\Http\Controllers\HomeController::class, 'Contact'])->name('contact');
+Route::get('contact', [App\Http\Controllers\HomeController::class, 'Contact'])->name('contact');
 
- // about
+// about
 
- Route::get('about', [App\Http\Controllers\HomeController::class, 'About'])->name('about');
+Route::get('about', [App\Http\Controllers\HomeController::class, 'About'])->name('about');
 
 
- Route::get('props/price-asce', [App\Http\Controllers\Property\PropertyController::class, 'PriceAsce'])->name('orderby.asce.price');
+Route::get('props/price-asce', [App\Http\Controllers\Property\PropertyController::class, 'PriceAsce'])->name('orderby.asce.price');
 
 // price descending
- Route::get('props/price-desce', [App\Http\Controllers\Property\PropertyController::class, 'PriceDesce'])->name('orderby.desce.price');
+Route::get('props/price-desce', [App\Http\Controllers\Property\PropertyController::class, 'PriceDesce'])->name('orderby.desce.price');
 
 
- // users requests on its side
+// users requests on its side
 
 //  Route::get('users/sent-requests', [App\Http\Controllers\Users\UsersController::class, 'sentRequests'])->name('users.request');
 
@@ -78,12 +80,13 @@ Route::any('/search', [App\Http\Controllers\Property\PropertyController::class, 
 Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'viewLogin'])->name('view.login');
 
 Route::post('/admin/checklogin', [App\Http\Controllers\Admin\AdminController::class, 'checkLogin'])->name('check.login');
+//logout
+// web.php
+Route::post('/admin/logout', [App\Http\Controllers\Admin\AdminController::class, 'logout'])->name('admin.logout');
 
-Route::group(['prefix' => 'admin','middleware'=> 'auth:admin'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])->name('admin.dashboard');
-})
-
-;
+});
 
 // Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])
 //     ->name('check.dashboard')
@@ -98,41 +101,52 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'showCreateAgentForm'])->name('admin.agents.create');
     Route::post('/admin/agents/create', [App\Http\Controllers\Admin\AdminController::class, 'createAgent'])->name('admin.save.agents');
-// create home type and list
+    // create home type and list
     Route::get('/admin/allhometypes', [App\Http\Controllers\Admin\AdminController::class, 'homeTypes'])->name('admin.hometypes');
     Route::get('/admin/hometypes/create', [App\Http\Controllers\Admin\AdminController::class, 'createhomeTypes'])->name('admin.hometypes.create');
     Route::post('/admin/hometypes', [App\Http\Controllers\Admin\AdminController::class, 'savecreatehomeTypes'])->name('admin.hometypes.save');
 
 
-// update hometype  '
-Route::get('/admin/hometypes/update/{id}', [App\Http\Controllers\Admin\AdminController::class, 'updatehomeTypes'])->name('admin.hometypes.update');
-Route::post('/admin/hometypes/updatesave/{id}', [App\Http\Controllers\Admin\AdminController::class, 'saveupdatehomeTypes'])->name('hometypes.update.save');
+    // update hometype  '
+    Route::get('/admin/hometypes/update/{id}', [App\Http\Controllers\Admin\AdminController::class, 'updatehomeTypes'])->name('admin.hometypes.update');
+    Route::post('/admin/hometypes/updatesave/{id}', [App\Http\Controllers\Admin\AdminController::class, 'saveupdatehomeTypes'])->name('hometypes.update.save');
 
 
-// delete home types
+    // delete home types
 
-Route::get('/admin/hometypes/delete/{id}', [App\Http\Controllers\Admin\AdminController::class, 'deletehomeTypes'])->name('admin.hometypes.delete');
+    Route::get('/admin/hometypes/delete/{id}', [App\Http\Controllers\Admin\AdminController::class, 'deletehomeTypes'])->name('admin.hometypes.delete');
 
-// requests to admin
-Route::get('/admin/allrequests', [App\Http\Controllers\Admin\AdminController::class, 'requestsAdmin'])->name('admin.requests');
+    // requests to admin
+    Route::get('/admin/allrequests', [App\Http\Controllers\Admin\AdminController::class, 'requestsAdmin'])->name('admin.requests');
 
 
 
-// properties
+    // properties
 
-Route::get('/admin/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('admin.properties');
-Route::get('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'createProperties'])->name('admin.properties.create');
-Route::post('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'savecreateProperties'])->name('admin.properties.save');
-Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteProperties'])->name('admin.properties.delete');
+    Route::get('/admin/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('admin.properties');
+    Route::get('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'createProperties'])->name('admin.properties.create');
+    Route::post('/admin/properties/create', [App\Http\Controllers\Admin\AdminController::class, 'savecreateProperties'])->name('admin.properties.save');
+    Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteProperties'])->name('admin.properties.delete');
 
-Route::get('/admin/agent/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteAgent'])->name('admin.agent.delete');
+    Route::get('/admin/agent/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteAgent'])->name('admin.agent.delete');
 
-// images posts
+    // change password
+   // Route to show the change password form
+Route::get('/admin/change-password', [App\Http\Controllers\Admin\AdminController::class, 'showChangePasswordForm'])->name('admin.change.password');
 
-Route::get('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'createimagespost'])->name('admin.images.create');
-Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'saveimagespost'])->name('admin.images.save');
+// Route to process the password change request
+Route::post('/change-password/save', [App\Http\Controllers\Admin\AdminController::class, 'adminchangePassword'])->name('changeowner.password.post');
 
+    // images posts
+
+    Route::get('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'createimagespost'])->name('admin.images.create');
+    Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'saveimagespost'])->name('admin.images.save');
 });
+    Route::get('/owner/change-password', [App\Http\Controllers\Owner\OwnerController::class, 'showChangePasswordForm'])->name('owner.change.password');
+
+// Route to process the password change request
+Route::post('/change-password/save', [App\Http\Controllers\Owner\OwnerController::class, 'changePassword'])->name('changeowner.password.post');
+
 
 
 
@@ -165,7 +179,24 @@ Route::post('/agent/properties/create', [App\Http\Controllers\Agent\AgentControl
 // Owners
 
 
-Route::get('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerlogin'])->name('view.owner.login');
+// Route::get('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerlogin'])->name('view.owner.login');
 
+// Route::post('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'loginowner'])->name('save.owner.login');
+// Route::get('/owner/dashboard', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerdashboard'])->name('view.owner.dashboard');
+
+Route::get('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerlogin'])->name('view.owner.login');
 Route::post('/owner/login', [App\Http\Controllers\Owner\OwnerController::class, 'loginowner'])->name('save.owner.login');
-Route::get('/owner/dashboard', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerdashboard'])->name('view.owner.dashboard');
+Route::get('/owner/dashboard', [App\Http\Controllers\Owner\OwnerController::class, 'viewownerdashboard'])
+    ->name('view.owner.dashboard')
+    ->middleware('auth:owner');
+
+    Route::middleware('auth:owner')->group(function () {
+    Route::get('/owner/change-password', [App\Http\Controllers\Owner\OwnerController::class, 'showChangePasswordForm'])->name('owner.change.password');
+
+// Route to process the password change request
+Route::post('/change-password/save', [App\Http\Controllers\Owner\OwnerController::class, 'changePassword'])->name('changeowner.password.post');
+Route::get('/count', [App\Http\Controllers\Owner\OwnerController::class, 'ownercountDashboard'])->name('owner.dashboard');
+
+    });
+
+    Route::post('/owner/logout', [App\Http\Controllers\Owner\OwnerController::class, 'logout'])->name('owner.logout');

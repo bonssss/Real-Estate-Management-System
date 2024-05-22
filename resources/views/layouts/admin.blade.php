@@ -14,7 +14,7 @@
     <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">LOGO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,11 +49,14 @@
                                 {{ Auth::guard('admin')->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('admin.change.password') }}">
+                                    Change Password
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
@@ -64,6 +67,7 @@
                         </li>
                     @endauth
                 </ul>
+
             </div>
         </div>
     </nav>

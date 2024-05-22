@@ -37,6 +37,9 @@
                                 <th scope="col">home type</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">City</th>
+                                <th scope="col">status</th>
+
+
                                 <th scope="col">delete</th>
                             </tr>
                         </thead>
@@ -50,6 +53,20 @@
                                     <td>{{ $allprops->home_type }}</td>
                                     <td>{{ $allprops->type }}</td>
                                     <td>{{ $allprops->city }}</td>
+                                    {{-- <td>{{ $allprops->status }}</td> --}}
+                                    <td>
+                                        <form action="{{ route('update.status', $allprops->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="status">
+                                                <option value="processing" {{ $allprops->status == 'processing' ? 'selected' : '' }}>Processing</option>
+                                                <option value="rented" {{ $allprops->status == 'rented' ? 'selected' : '' }}>Rented</option>
+                                                <option value="sold" {{ $allprops->status == 'sold' ? 'selected' : '' }}>Sold</option>
+                                            </select>
+                                            <button type="submit">Update Status</button>
+                                        </form>
+                                    </td>
+
 
                                     <td>
                                         {{-- <button onclick="confirmDelete({{ $allprops->id }})" class="btn btn-danger text-center">Delete</button> --}}
