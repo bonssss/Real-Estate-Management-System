@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
@@ -35,17 +36,64 @@ class AdminController extends Controller
         return redirect()->back()->with(['error' => 'error logging in']);
     }
 
+    //Logout
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('view.login')->with('success', 'You have been logged out.');
+    }
+
+    // change password
+    public function showChangePasswordForm()
+    {
+        return view('admin.changepassword');
+    }
+
+    public function adminchangePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Check if the current password matches the user's password
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        // Update the user's password with the new hashed password
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return redirect('/admin/dashboard')->with('success', 'Password changed successfully!');
+    }
 
     public function adminDashboard()
     {
         $requestCount = Requests::select()->count();
+        $rentedCount = Property::select()->where('status','rented')->count();
+        $soldCount = Property::select()->where('status','sold')->count();
+        $processingCount = Property::select()->where('status','Processing')->count();
+        $rentCount =Property::select()->where('type', 'Rent')->count();
+
+
 
         $agentCount = Agent::select()->count();
         $propertyCount = Property::select()->count();
         $homeCount = PropertyType::select()->count();
         $buyCount = Property::select()->where('type', 'Buy')->count();
 
-        return View('admin.index', compact('agentCount', 'propertyCount', 'homeCount', 'buyCount','requestCount'));
+        return View('admin.index', compact('agentCount','rentedCount','processingCount','soldCount', 'propertyCount', 'homeCount', 'buyCount','requestCount','rentCount'));
     }
 
     public function  showAgentlist()
@@ -455,6 +503,18 @@ $deleteimages = PropertyImage::where("prop_id",$id)->get();
             return redirect('/admin/allproperties')->with('delete', 'Property type  deleted successfully.');
         }
     }
+
+
+
+
+    public function updateStatus(Request $request, $id)
+{
+    $property = Property::findOrFail($id);
+    $property->status = $request->input('status');
+    $property->save();
+
+    return redirect()->back()->with('success', 'Status updated successfully');
+}
 
 
 

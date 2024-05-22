@@ -8,7 +8,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+// update status
+Route::put('/properties/{id}/update-status', [App\Http\Controllers\Admin\AdminController::class, 'updateStatus'])->name('update.status');
 
 // send contact
 Route::post('/contact/submit', [App\Http\Controllers\Contact\ContactController::class, 'submit'])->name('contacts.submit');
@@ -79,6 +80,9 @@ Route::any('/search', [App\Http\Controllers\Property\PropertyController::class, 
 Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'viewLogin'])->name('view.login');
 
 Route::post('/admin/checklogin', [App\Http\Controllers\Admin\AdminController::class, 'checkLogin'])->name('check.login');
+//logout
+// web.php
+Route::post('/admin/logout', [App\Http\Controllers\Admin\AdminController::class, 'logout'])->name('admin.logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])->name('admin.dashboard');
@@ -126,11 +130,23 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/admin/agent/delete{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteAgent'])->name('admin.agent.delete');
 
+    // change password
+   // Route to show the change password form
+Route::get('/admin/change-password', [App\Http\Controllers\Admin\AdminController::class, 'showChangePasswordForm'])->name('admin.change.password');
+
+// Route to process the password change request
+Route::post('/change-password/save', [App\Http\Controllers\Admin\AdminController::class, 'adminchangePassword'])->name('changeowner.password.post');
+
     // images posts
 
     Route::get('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'createimagespost'])->name('admin.images.create');
     Route::post('/admin/images/create', [App\Http\Controllers\Admin\AdminController::class, 'saveimagespost'])->name('admin.images.save');
 });
+    Route::get('/owner/change-password', [App\Http\Controllers\Owner\OwnerController::class, 'showChangePasswordForm'])->name('owner.change.password');
+
+// Route to process the password change request
+Route::post('/change-password/save', [App\Http\Controllers\Owner\OwnerController::class, 'changePassword'])->name('changeowner.password.post');
+
 
 
 

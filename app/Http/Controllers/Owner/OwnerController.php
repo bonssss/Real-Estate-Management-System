@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Owner;
-
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Agent\Agent;
 use App\Models\Property\Property;
@@ -99,12 +99,15 @@ public function ownercountDashboard()
 {
     $requestCount = Requests::count();
     $agentCount = Agent::count();
-    $propertyCount = Property::count();
+    // $propertyCount = Property::count();
+        $propertyCount = 30;
+
     $homeCount = PropertyType::count();
     $buyCount = Property::where('type', 'Buy')->count();
-    $rentedCount = Property::where('status', 'rented')->count();
-    $vacantCount = Property::where('status', 'vacant')->count();
 
-    return view('view.owner.dashboard', compact('agentCount', 'propertyCount', 'homeCount', 'buyCount', 'requestCount', 'rentedCount', 'vacantCount', 'tenantCount'));
+    Log::info("Counts: ", [
+        'propertyCount'=>$propertyCount,
+    ]);
+    return view('owner.dashboard', compact( 'propertyCount', 'homeCount', 'buyCount', 'requestCount', 'rentedCount', 'vacantCount', 'tenantCount'));
 }
 }

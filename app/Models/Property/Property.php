@@ -27,7 +27,8 @@ class Property extends Model
         // 'longitude',
         'agent_name',
         'city',
-        'type'
+        'type',
+        'status'
     ];
 
 
