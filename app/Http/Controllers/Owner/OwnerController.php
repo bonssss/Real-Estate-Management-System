@@ -7,10 +7,12 @@ use App\Models\Agent\Agent;
 use App\Models\Property\Property;
 use App\Models\Property\PropertyType;
 use App\Models\Property\Requests;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class OwnerController extends Controller
 {
@@ -46,8 +48,31 @@ class OwnerController extends Controller
     // Display the owner's dashboard
     public function viewownerdashboard()
     {
-        return view('owner.dashboard');
+        $requestCount = Requests::select()->count();
+        $rentedCount = Property::select()->where('status','rented')->count();
+        $soldCount = Property::select()->where('status','sold')->count();
+        $processingCount = Property::select()->where('status','Processing')->count();
+        $rentCount =Property::select()->where('type', 'Rent')->count();
+
+
+        $agentCount = Agent::select()->count();
+        $propertyCount = Property::select()->count();
+        $homeCount = PropertyType::select()->count();
+        $buyCount = Property::select()->where('type', 'Buy')->count();
+        $apartment=Property::select()->where('home_type', 'Apartment')->count();
+        $residential=Property::select()->where('home_type', 'Residential')->count();
+        $mixeduse=Property::select()->where('home_type', 'Mixed Use')->count();
+        $customers =User::select()->count();
+        $agent=Agent::select()->count();
+
+
+
+
+        return View('owner.dashboard', compact('agentCount','rentedCount',
+        'processingCount','soldCount', 'propertyCount', 'homeCount',
+        'buyCount','requestCount','rentCount','apartment','residential','mixeduse','customers','agent'));
     }
+
 
     public function showChangePasswordForm()
     {
@@ -95,21 +120,20 @@ class OwnerController extends Controller
     //count
 
 
-public function ownercountDashboard()
-{
-    $requestCount = Requests::select()->count();
-    $rentedCount = Property::select()->where('status','rented')->count();
-    $soldCount = Property::select()->where('status','sold')->count();
-    $processingCount = Property::select()->where('status','Processing')->count();
-    $rentCount =Property::select()->where('type', 'Rent')->count();
+// public function ownercountDashboard()
+// {
+//     $requestCount = Requests::select()->count();
+//     $rentedCount = Property::select()->where('status','rented')->count();
+//     $soldCount = Property::select()->where('status','sold')->count();
+//     $processingCount = Property::select()->where('status','Processing')->count();
+//     $rentCount =Property::select()->where('type', 'Rent')->count();
 
 
+//     $agentCount = Agent::select()->count();
+//     $propertyCount = Property::select()->count();
+//     $homeCount = PropertyType::select()->count();
+//     $buyCount = Property::select()->where('type', 'Buy')->count();
 
-    $agentCount = Agent::select()->count();
-    $propertyCount = Property::select()->count();
-    $homeCount = PropertyType::select()->count();
-    $buyCount = Property::select()->where('type', 'Buy')->count();
-
-    return View('owner.dashboard', compact('agentCount','rentedCount','processingCount','soldCount', 'propertyCount', 'homeCount', 'buyCount','requestCount','rentCount'));
-}
+//     return View('view.owner.dashboard', compact('agentCount','rentedCount','processingCount','soldCount', 'propertyCount', 'homeCount', 'buyCount','requestCount','rentCount'));
+// }
 }

@@ -20,13 +20,13 @@ body {
 }
 
 .sidebar {
-    position:relative;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
     width: 250px;
-    height: 100vh;
-    background-color: #2b7105;
+    background-color: #cbb107;
     color: #fff;
     padding-top: 60px;
-    overflow-y: auto;
 }
 
 .sidebar-header {
@@ -62,16 +62,20 @@ body {
     color: #fff;
     text-decoration: none;
 }
-sidebar-list li a:hover {
+
+.sidebar-list li a:hover {
     background-color: #010b14;
-
-
 }
 
 .main-content {
     padding: 20px;
     flex: 1; /* Ensure main content takes remaining space */
     overflow-y: auto; /* Add scroll if content overflows */
+    margin-left: 250px; /* Adjust to match the sidebar width */
+}
+.card-body{
+    align-items: center;
+    align-self: center;
 }
 
 /* Hide sidebar on small screens */
@@ -83,6 +87,18 @@ sidebar-list li a:hover {
     .main-content {
         margin-left: 0;
     }
+}
+
+.circle-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it circular */
+    background-color: #def0b9; /* Change color as needed */
+    color: #fff; /* Text color */
+    font-size: 24px; /* Adjust font size as needed */
 }
 
 
