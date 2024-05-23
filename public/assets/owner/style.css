@@ -1,6 +1,6 @@
 /* Dashboard Styles */
 body {
-    background-color: #f8f9fa;
+    background-color: #F6DCAC;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@ body {
 }
 
 .navbar {
-    background-color: #010b14 !important;
+    background-color: #030637 !important;
     z-index: 1000;
     position: fixed;
     width: 100%;
@@ -24,7 +24,7 @@ body {
     height: 100%;
     overflow-y: auto;
     width: 250px;
-    background-color: #cbb107;
+    background-color: #028391;
     color: #fff;
     padding-top: 60px;
 }
@@ -59,7 +59,7 @@ body {
 }
 
 .sidebar-list li a {
-    color: #fff;
+    color: #FEAE6F;
     text-decoration: none;
 }
 

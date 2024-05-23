@@ -10,8 +10,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <div id="wrapper">
-    <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark navbar-custom" id="navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">LOGO</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"

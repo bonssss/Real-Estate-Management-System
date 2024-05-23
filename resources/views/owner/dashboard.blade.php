@@ -9,11 +9,13 @@
 
     .card {
         margin-bottom: 20px;
+        background-color: #FEAE6F;
+
     }
 
     .card-header {
-        background-color: #cbb107;
-        color: #fff;
+        background-color: #FEAE6F;
+        color: #0e0d0d;
         font-size: 1.5rem;
         font-weight: bold;
         text-align: center;
