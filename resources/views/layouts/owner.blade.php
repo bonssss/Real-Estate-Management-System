@@ -26,7 +26,7 @@
                             <a class="nav-link" href="{{ route('about') }}">About</a>
                         </li>
                         <li class="nav-item d-lg-none"> <!-- Hide in large screens -->
-                            <a class="nav-link" href="{{route('owner.dashboard')}}">Dashboard</a>
+                            <a class="nav-link" href="{{route('view.owner.dashboard')}}">Dashboard</a>
                         </li>
                         <li class="nav-item d-lg-none"> <!-- Hide in large screens -->
                             <a class="nav-link" href="#">Analytics</a>
@@ -72,7 +72,7 @@
                 </button> --}}
                 </div>
                 <ul class="sidebar-list">
-                    <li><a href="{{route('owner.dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="{{route('view.owner.dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
                     <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
                     <li><a href="#" id="settings-link"><i class="fas fa-cog"></i> Settings</a>
                     </li>

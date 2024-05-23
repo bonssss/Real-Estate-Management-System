@@ -195,7 +195,7 @@ Route::get('/owner/dashboard', [App\Http\Controllers\Owner\OwnerController::clas
 
 // Route to process the password change request
 Route::post('/change-password/save', [App\Http\Controllers\Owner\OwnerController::class, 'changePassword'])->name('changeowner.password.post');
-Route::get('/count', [App\Http\Controllers\Owner\OwnerController::class, 'ownercountDashboard'])->name('owner.dashboard');
+// Route::get('/owner/dashboard', [App\Http\Controllers\Owner\OwnerController::class, 'ownercountDashboard'])->name('owners.dashboard');
 
     });
 
