@@ -43,13 +43,13 @@
                     </div>
 
 
-                      {{-- <div class="form-outline mb-4 mt-4">
+                      <div class="form-outline mb-4 mt-4">
                         <input type="text" name="latitude" id="latitude" class="form-control" placeholder="Latitude" />
                       </div>
                       <!-- Longitude input -->
                       <div class="form-outline mb-4 mt-4">
                         <input type="text" name="longitude" id="longitude" class="form-control" placeholder="Longitude" />
-                      </div> --}}
+                      </div>
 
                     <select name="home_type" class="form-control form-select" aria-label="Default select example">
                         <option selected>Select Home Type</option>

@@ -23,8 +23,9 @@ class Property extends Model
         'price/sqft',
         'more_info',
         'location',
-        // 'latitude',
-        // 'longitude',
+        'longitude',
+        'latitude',
+
         'agent_name',
         'city',
         'type',

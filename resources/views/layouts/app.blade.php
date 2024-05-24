@@ -10,6 +10,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     {{-- imported css files  --}}
+    <!-- Add this line to your HTML file -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
     <link rel="stylesheet" href="{{asset('assets/fonts/icomoon/style.css')}}">
 
@@ -280,6 +286,8 @@
   <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
   <script src="{{asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{asset('assets/js/aos.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <script src="{{asset('assets/js/main.js')}}"></script>
 </body>

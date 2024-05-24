@@ -369,8 +369,8 @@ public function  deleteAgent($id)
             'price/sqft' => $request->{'price/sqft'},
 
             'location' => $request->location,
-            // 'latitude' => $request->latitude,
-            // 'longitude' => $request->longitude,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'home_type' => $request->home_type,
             'type' => $request->type,
             'city' => $request->city,
