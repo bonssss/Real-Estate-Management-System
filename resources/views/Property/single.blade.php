@@ -131,59 +131,51 @@
                 <div class="col-lg-4">
 
                     <div class="bg-white widget border rounded">
-
                         <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
                         @if (isset(Auth::user()->id))
                             @if ($formvalidation > 0)
                                 <p class="alert alert-success"> You already sent request</p>
                             @else
-                                <form action="{{ route('insert.request', $singleProp->id) }}" method="POST"
-                                    class="form-contact-agent">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="hidden" name="prop_id" value="{{ $singleProp->id }}" id="name"
-                                            class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="agent_name" value="{{ $singleProp->agent_name }}"
-                                            id="name" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" name="name" id="name" class="form-control">
-
-
-                                    </div>
-                                    @error('name')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" name="email" id="email" class="form-control">
-                                    </div>
-                                    @error('email')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group">
-                                        <label for="phone">Phone</label>
-                                        <input type="text" name="phone_number" id="phone" class="form-control">
-                                    </div>
-                                    @error('phone_number')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group">
-                                        <input type="submit" name="submit" id="phone" class="btn btn-primary"
-                                            value="Send request">
-                                    </div>
-                                </form>
+                            @if($singleProp->status !== 'rented' && $singleProp->status !== 'sold')                                    <form action="{{ route('insert.request', $singleProp->id) }}" method="POST" class="form-contact-agent">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="hidden" name="prop_id" value="{{ $singleProp->id }}" id="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="agent_name" value="{{ $singleProp->agent_name }}" id="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" id="name" class="form-control">
+                                            @error('name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email" id="email" class="form-control">
+                                            @error('email')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" name="phone_number" id="phone" class="form-control">
+                                            @error('phone_number')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" id="phone" class="btn btn-primary" value="Send request">
+                                        </div>
+                                    </form>
+                                @endif
                             @endif
                         @else
                             <p class="alert alert-warning">Log in to send request</p>
@@ -193,98 +185,84 @@
 
 
                     <div class="bg-white widget border rounded">
-
                         <h3 class="h4 text-black widget-title mb-3">Save Favorite</h3>
                         @if (isset(Auth::user()->id))
                             @if ($favoritevalidation > 0)
                                 <p class="alert alert-success"> You already saved the property</p>
                             @else
-                                <form action="{{ route('save.favorite', $singleProp->id) }}" method="POST"
-                                    class="form-contact-agent">
-                                    @csrf
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="prop_id" value="{{ $singleProp->id }}"
-                                            id="name" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="title" value="{{ $singleProp->title }}"
-                                            id="name" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" value="{{ $singleProp->image }}" name="image"
-                                            id="name" class="form-control">
-
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" value="{{ $singleProp->location }}" name="location"
-                                            id="location" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" value="{{ $singleProp->price }}" name="price"
-                                            id="phone" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="submit" name="submit" id="phone" class="btn btn-primary"
-                                            value="save property">
-                                    </div>
-                                </form>
+                                @if($singleProp->status !== 'rented' && $singleProp->status !== 'sold')
+                                    <form action="{{ route('save.favorite', $singleProp->id) }}" method="POST" class="form-contact-agent">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="hidden" name="prop_id" value="{{ $singleProp->id }}" id="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="title" value="{{ $singleProp->title }}" id="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" value="{{ $singleProp->image }}" name="image" id="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" value="{{ $singleProp->location }}" name="location" id="location" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" value="{{ $singleProp->price }}" name="price" id="phone" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" id="phone" class="btn btn-primary" value="save property">
+                                        </div>
+                                    </form>
+                                @endif
                             @endif
                         @else
                             <p class="alert alert-warning">Login to save to favorite</p>
                         @endif
-
                     </div>
+
 
                     <!-- Payment Form Section -->
                     <div class="bg-white widget border rounded">
                         <h3 class="h4 text-black widget-title mb-3">Make a Payment</h3>
-                        <form action="" method="POST" class="form-payment">
-
-                        {{-- <form action="{{route('payment.process')}}" method="POST" class="form-payment"> --}}
-                            @csrf
-                            <!-- Payment Form Fields -->
-                            <div class="form-group">
-                                <label for="amount">Amount</label>
-                                <input type="text" name="amount" id="amount" class="form-control"
-                                    value="{{ $singleProp->price }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="currency">Currency</label>
-                                <select name="currency" id="currency" class="form-control">
-                                    <option value="USD">USD</option>
-                                    <option value="USD">ETB</option>
-
-                                    <!-- Add other currency options as needed -->
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" name="firstName" id="firstName" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" name="lastName" id="lastName" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="tx_ref">Transaction Reference</label>
-                                <input type="text" name="tx_ref" id="tx_ref" class="form-control">
-                            </div>
-                            <!-- Other Payment Fields -->
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-primary" value="Make Payment">
-                            </div>
-                        </form>
+                        @if ($singleProp->status !== 'rented' && $singleProp->status !== 'sold')
+                            <form action="" method="POST" class="form-payment">
+                                @csrf
+                                <!-- Payment Form Fields -->
+                                <div class="form-group">
+                                    <label for="amount">Amount</label>
+                                    <input type="text" name="amount" id="amount" class="form-control" value="{{ $singleProp->price }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="currency">Currency</label>
+                                    <select name="currency" id="currency" class="form-control">
+                                        <option value="USD">USD</option>
+                                        <option value="USD">ETB</option>
+                                        <!-- Add other currency options as needed -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" name="firstName" id="firstName" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" name="lastName" id="lastName" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tx_ref">Transaction Reference</label>
+                                    <input type="text" name="tx_ref" id="tx_ref" class="form-control">
+                                </div>
+                                <!-- Other Payment Fields -->
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Make Payment">
+                                </div>
+                            </form>
+                        @else
+                            <p class="alert alert-warning">Payment is not available for this property because it is either rented or sold.</p>
+                        @endif
                     </div>
 
 

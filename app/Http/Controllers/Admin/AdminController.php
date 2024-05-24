@@ -33,7 +33,7 @@ class AdminController extends Controller
 
             return redirect()->route('admin.dashboard');
         }
-        return redirect()->back()->with(['error' => 'error logging in']);
+        return redirect()->back()->with(['error' => 'Invalid email or password']);
     }
 
     //Logout

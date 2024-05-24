@@ -74,6 +74,11 @@
     </nav>
     <div class="container-fluid">
         <main class="py-4">
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>
