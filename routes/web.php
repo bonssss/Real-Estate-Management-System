@@ -200,3 +200,13 @@ Route::post('/change-password/save', [App\Http\Controllers\Owner\OwnerController
     });
 
     Route::post('/owner/logout', [App\Http\Controllers\Owner\OwnerController::class, 'logout'])->name('owner.logout');
+
+
+    ////payment
+
+    // Route::post('/payment/process', [App\Http\Controllers\PaymentController::class, 'process'])->name('payment.process');
+// Initialize Payment
+Route::post('/pay', 'App\Http\Controllers\ChapaController@initialize')->name('pay');
+
+// Callback URL after Payment
+Route::get('/callback/{reference}', 'App\Http\Controllers\ChapaController@callback')->name('callback');

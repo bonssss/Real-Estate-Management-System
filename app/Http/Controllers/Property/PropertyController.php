@@ -34,6 +34,8 @@ public function single($id){
 
     $relatedProperties = Property::where('home_type',$singleProp->home_type)->where('id','!=',$id)
     ->take(3)->orderBy('created_at','desc')->get();
+    $latitude = $singleProp->latitude;
+    $longitude = $singleProp->longitude;
 
    if (auth()->user()){
       //validation send request
@@ -45,7 +47,7 @@ public function single($id){
 
 
 
-      return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation','favoritevalidation'));
+      return view('Property.single', compact('singleProp','propertyimages','relatedProperties','formvalidation','favoritevalidation','latitude', 'longitude'));
 
 
 
