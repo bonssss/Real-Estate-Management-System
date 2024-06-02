@@ -1,0 +1,42 @@
+/* custom.css */
+
+/* Color Scheme */
+body {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.card {
+    background-color: #fff; /* White cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Typography */
+h5.card-title {
+    font-family: 'Roboto', sans-serif; /* Google Font */
+    font-size: 1.2rem; /* Larger font size */
+    font-weight: 600; /* Semi-bold */
+    color: #333; /* Dark text color */
+}
+
+/* Spacing and Layout */
+.container-fluid {
+    padding: 20px; /* Add padding to container */
+}
+
+.col-md-4 {
+    margin-bottom: 20px; /* Add space between columns */
+}
+
+/* Visual Elements */
+.feather-icon {
+    width: 24px; /* Icon size */
+    height: 24px;
+    margin-right: 8px; /* Spacing between icon and text */
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-4px); /* Move card up on hover */
+    transition: transform 0.3s ease;
+}

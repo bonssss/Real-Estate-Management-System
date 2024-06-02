@@ -2,6 +2,7 @@
 
 namespace App\Models\Property;
 
+use App\Models\Agent\Agent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,4 +35,9 @@ class Property extends Model
 
 
     public $timestamps = true;
+
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class);
+    }
 }

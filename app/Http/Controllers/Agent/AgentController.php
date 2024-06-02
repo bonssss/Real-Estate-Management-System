@@ -3,97 +3,155 @@
 namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent\Agent;
 use App\Models\Property\Property;
-use App\Models\Property\Requests;
 use Illuminate\Http\Request;
+use App\Models\Property\PropertyType;
+use App\Models\Property\Requests;
+use App\Models\Property\PropertyImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class AgentController extends Controller
 {
-    //
-    public function viewagentlogin()
-    {
 
-        return View('agent.loginpage');
+
+
+    public function viewagentlogin(){
+        return view('agents.login');
     }
-    public function agentlogin(Request $request)
-    {
+
+    public function checkLogin(Request $request){
+
         $remember_me = $request->has('remember_me') ? true : false;
 
         if (auth()->guard('agent')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
 
-            return redirect()->route('view.agent.dashboard');
+            return redirect() -> route('agent.dashboard');
         }
         return redirect()->back()->with(['error' => 'error logging in']);
+    }
 
+    public function agentlogout(Request $request)
+    {
+        Auth::guard('agent')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('view.agent.login'); // Redirect to the login page after logout
     }
 
 
+    public function index(){
+        $requestCount = Requests::select()->count();
+        $rentedCount = Property::select()->where('status','rented')->count();
+        $soldCount = Property::select()->where('status','sold')->count();
+        $processingCount = Property::select()->where('status','Processing')->count();
+        $rentCount =Property::select()->where('type', 'Rent')->count();
 
 
 
-    public function viewagentdashboard()
-
-    {
+        $agentCount = Agent::select()->count();
         $propertyCount = Property::select()->count();
-
-
-        return View('agent.dashboard',compact('propertyCount'));
+        $homeCount = PropertyType::select()->count();
+        $buyCount = Property::select()->where('type', 'Buy')->count();
+        return view('agents.index', compact('propertyCount','homeCount','buyCount','rentCount','requestCount'));
     }
 
+    public function allHomeTypes(){
 
-    // public function  requestsAgent()
-    // {
-    //     $allrequests = Requests::select()->get();
-    //     return view('agent.request', compact('allrequests'));
-    // }
+        $allHomeTypes = PropertyType::select()->get();
 
-    public function requestsAgent()
-{
-    // Get the currently authenticated agent
-    $agent = Auth::guard('agent')->user();
-
-    if (!$agent) {
-        // Handle case where agent is not authenticated
-        return redirect()->route('view.login')->with('error', 'Agent not logged in.');
+        return view('agents.hometypes', compact('allHomeTypes'));
     }
 
-    // Retrieve requests associated with the current agent
-    $allrequests = Requests::where('agent_name', $agent->name)
-                            ->get();
-
-    return view('agent.request', compact('allrequests'));
-}
+    public function createHomeTypes(){
 
 
-
-public function  Properties()
-    {
-        $allproperty = Property::select()->get();
-        return view('agent.propertylist', compact('allproperty'));
+        return view('agents.createhometypes');
     }
 
-    public function  createProperties()
-    {
-        return view('agent.createproperty');
+    public function saveHomeTypes(Request $request){
+        Request()->validate([
+            "propstype" => "required|max:40"
+        ]);
+        $saveHomeTypes = PropertyType::create([
+            'propstype' => $request->propstype,
+
+        ]);
+
+        if($saveHomeTypes) {
+
+            return redirect('/agent/all-hometypes/')->with('success', 'Home Type Created Successfully');
+        }
     }
 
+    public function updateHomeTypes($id){
 
-    public function  savecreateProperties(Request $request)
-    {
+         $homeType = PropertyType::find($id);
+
+        return view('agents.updatehometypes', compact('homeType'));
+    }
+
+    public function editHomeTypes(Request $request, $id){
+        Request()->validate([
+            "propstype" => "required|max:50"
+        ]);
+
+        $singlehometype = PropertyType::find($id);
+        $singlehometype->update($request->all());
 
 
-        // Request()->validate([
-        //     "propstype"=> "required|max:50"
-        // ]);
+        if ($singlehometype) {
+            return redirect('/admin/allhometypes')->with('update', 'Property type  updated successfully.');
+        }
+    }
+
+    public function deleteHomeTypes($id){
+
+        $homeType = PropertyType::find($id);
+        $homeType->delete();
+
+        if($homeType) {
+
+            return redirect('/agent/all-hometypes/')->with('delete', 'Home Type Deleted Successfully');
+        }
+   }
+
+    public function Requests(){
+
+        $requests = Requests::all();
+
+    return view('agents.requests', compact('requests'));
+    }
+
+    public function allProperty(){
+
+        $property = Property::all();
+
+    return view('agents.property', compact('property'));
+    }
+
+    public function createProperty(){
+
+
+
+    return view('agents.createproperty');
+    }
+
+    public function addProperty(Request $request){
+        //Request()->validate([
+            //"propstype" => "required|max:40"
+        //]);
+
         $destinationPath = 'assets/images/';
         $myimage = $request->image->getClientOriginalName();
         $request->image->move(public_path($destinationPath), $myimage);
 
+        $addProperty = Property::create([
 
-
-
-        $saveproperties = Property::create([
             'title' => $request->title,
             'price' => $request->price,
             'image' => $myimage,
@@ -104,6 +162,8 @@ public function  Properties()
             'price/sqft' => $request->{'price/sqft'},
 
             'location' => $request->location,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'home_type' => $request->home_type,
             'type' => $request->type,
             'city' => $request->city,
@@ -111,15 +171,114 @@ public function  Properties()
 
             'agent_name' => $request->agent_name,
 
-
-
-
         ]);
 
+        if($addProperty) {
 
-        if ($saveproperties) {
-            return redirect('/agent/allproperties')->with('success', 'Property  created successfully.');
+            return redirect('/agent/all-property/')->with('success', 'Property Added Successfully');
         }
     }
+
+    public function createGallery(){
+
+        $property = Property::all();
+
+        return view('agents.creategallery', compact('property'));
+    }
+
+    public function addGallery(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'image' => 'required|array', // 'image' field must be present and an array
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image file
+            'prop_id' => 'required|integer', // 'prop_id' must be present and an integer
+        ]);
+
+        // Process uploaded files
+        if ($request->hasFile('image')) {
+            $files = $request->file('image');
+
+            foreach ($files as $file) {
+                // Generate a unique filename
+                $name = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+                // Store the file in the specified directory
+                $savepath = public_path('assets/postimages/');
+                $file->move($savepath, $name);
+
+                // Create a new PropertyImage record
+                PropertyImage::create([
+                    'image' => $name,
+                    'prop_id' => $request->prop_id,
+                ]);
+            }
+
+            // Redirect back with success message if files were processed successfully
+            return redirect('/agent/all-property')->with('success_gallery', 'Images uploaded successfully.');
+        }
+
+        // Handle case when no files were uploaded (shouldn't reach here with required validation)
+        return redirect('/agent/all-property')->with('error', 'No images uploaded.');
+    }
+
+    public function  deleteProperty($id)
+    {
+
+        $deleteProperty = Property::find($id);
+        if(File::exists(public_path('assets/images/' . $deleteProperty->image))){
+            File::delete(public_path('assets/images/' . $deleteProperty->image));
+        }else{
+            //dd('File does not exists.');
+        }
+        $deleteProperty->delete();
+
+        $deleteGallery = PropertyImage::where("prop_id",$id)->get();
+        foreach($deleteGallery as $delete){
+            if(File::exists(public_path('assets/image_gallery/' . $delete->image))){
+                File::delete(public_path('assets/image_gallery/' . $delete->image));
+            }else{
+                //dd('File does not exists.');
+            }
+
+            $delete->delete();
+        }
+                if ($deleteProperty) {
+                    return redirect('/agent/all-property')->with('delete', 'Property deleted successfully.');
+                }
+    }
+
+
+
+
+    public function updateStatus(Request $request, $id)
+{
+    $property = Property::findOrFail($id);
+    $property->status = $request->input('status');
+    $property->save();
+
+    return redirect()->back()->with('success', 'Status updated successfully');
+}
+
+
+
+
+public function agentProperties($agentId)
+{
+    // Fetch the agent details from the database
+    $agent = Agent::findOrFail($agentId);
+
+    // Fetch properties specific to this agent
+    $properties = Property::where('agent_id', $agentId)->get();
+
+    // Pass the agent and properties data to the view
+    return view('properties', compact('agent', 'properties'));
+}
+
+
+
+
+
+
 
 }
