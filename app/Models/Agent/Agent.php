@@ -2,6 +2,8 @@
 namespace App\Models\Agent;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Property\Property;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,6 +29,11 @@ class Agent extends Authenticatable
         'image',
         // 'role',
     ];
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

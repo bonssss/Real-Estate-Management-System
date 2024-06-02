@@ -233,9 +233,8 @@
                     <div class="site-section-title">
                         <h2>Why Choose Us?</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores quisquam saepe architecto
-                        error corporis aliquam. Cum ipsam a consectetur aut sunt sint animi, pariatur corporis, eaque,
-                        deleniti cupiditate officia.</p>
+                    <p>Choose Hiya Real Estate for unmatched expertise, personalized service, and comprehensive solutions. With our integrity, proven results, and client-centric approach, we exceed expectations while actively engaging in community
+                        initiatives. Trust Hiya Real Estate for all your real estate needs.</p>
                 </div>
             </div>
 
@@ -277,33 +276,32 @@
     {{-- agents --}}
 
     <div class="site-section bg-light">
-        <div class="container">
+        <div class="container" data-aos="fade">
             <div class="row mb-5 justify-content-center">
-
-
                 <div class="col-md-7">
                     <div class="site-section-title text-center">
                         <h2>Our Agents</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur
-                            labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima
-                            quibusdam, laboriosam.</p>
+                        <p>Our agents are more than just professionals—they're your partners in achieving
+                            your real estate goals. With a deep understanding of the market and a commitment to
+                             personalized service, each agent brings a unique blend of expertise and passion to
+                             ensure your experience is nothing short of exceptional. Get to know our team and discover
+                             why Hiya Real Estate is your trusted choice for all your real estate needs.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
+
                 <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
                     <div class="team-member">
 
-                        <img src="{{ asset('assets/agents/1713435383_person_3.jpg') }}" alt="Image"
-                            class="img-fluid rounded mb-4">
+                        <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image" class="img-fluid rounded mb-4">
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Megan Smith</h2>
+                            <h2 class="mb-2 font-weight-light text-black h4">Eyob</h2>
                             <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi dolorem totam non quis facere
-                                blanditiis praesentium est. Totam atque corporis nisi, veniam non. Tempore cupiditate, vitae
-                                minus obcaecati provident beatae!</p>
+                            <p>our seasoned agent dedicated to realizing your dream home. With expert local knowledge
+                                and personalized service, Emily exceeds expectations at every turn.</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -314,9 +312,50 @@
                     </div>
                 </div>
 
+                <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+                    <div class="team-member">
 
+                        <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image"
+                            class="img-fluid rounded mb-4">
 
+                        <div class="text">
 
+                            <h2 class="mb-2 font-weight-light text-black h4">Abel</h2>
+                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
+                            <p>your dedicated real estate agent. With a passion for matching clients with
+                                 their perfect properties and a commitment to exceptional service,
+                                  Abel is here to guide you through every
+                                step of your real estate journey with professionalism and care.</p>
+                            <p>
+                                <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
+                                <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
+                                <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+                    <div class="team-member">
+
+                        <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image"
+                            class="img-fluid rounded mb-4">
+
+                        <div class="text">
+
+                            <h2 class="mb-2 font-weight-light text-black h4">Bonsa </h2>
+                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
+                            <p> your trusted partner in real estate. With a focus on understanding your unique needs and a dedication to delivering results.</p>
+                            <p>
+                                <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
+                                <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
+                                <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
         </div>

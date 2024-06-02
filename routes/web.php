@@ -153,25 +153,25 @@ Route::post('/change-password/save', [App\Http\Controllers\Owner\OwnerController
 // agent
 
 
-Route::get('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'viewagentlogin'])->name('view.agent.login');
+// Route::get('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'viewagentlogin'])->name('view.agent.login');
 
-Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'agentlogin'])->name('save.agent.login');
+// Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'agentlogin'])->name('save.agent.login');
 
-Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
+// Route::get('/agent/dashboard', [App\Http\Controllers\Agent\AgentController::class, 'viewagentdashboard'])->name('view.agent.dashboard');
 
-Route::get('/agent/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('agent.properties');
+// Route::get('/agent/allproperties', [App\Http\Controllers\Admin\AdminController::class, 'Properties'])->name('agent.properties');
 
 
-// request  sent to agent
+// // request  sent to agent
 
-Route::get('/agent/allrequests', [App\Http\Controllers\Agent\AgentController::class, 'requestsAgent'])->name('agent.requests');
+// Route::get('/agent/allrequests', [App\Http\Controllers\Agent\AgentController::class, 'requestsAgent'])->name('agent.requests');
 
-// properties agents created
+// // properties agents created
 
-Route::get('/agent/allproperties', [App\Http\Controllers\Agent\AgentController::class, 'Properties'])->name('agent.properties');
-Route::get('/agent/properties/create', [App\Http\Controllers\Agent\AgentController::class, 'createProperties'])->name('agent.properties.create');
-Route::post('/agent/properties/create', [App\Http\Controllers\Agent\AgentController::class, 'savecreateProperties'])->name('agent.properties.save');
-// Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Agent\AgentController::class, 'deleteProperties'])->name('admin.properties.delete');
+// Route::get('/agent/allproperties', [App\Http\Controllers\Agent\AgentController::class, 'Properties'])->name('agent.properties');
+// Route::get('/agent/properties/create', [App\Http\Controllers\Agent\AgentController::class, 'createProperties'])->name('agent.properties.create');
+// Route::post('/agent/properties/create', [App\Http\Controllers\Agent\AgentController::class, 'savecreateProperties'])->name('agent.properties.save');
+// // Route::get('/admin/properties/delete{id}', [App\Http\Controllers\Agent\AgentController::class, 'deleteProperties'])->name('admin.properties.delete');
 
 
 
@@ -210,3 +210,34 @@ Route::post('/pay', 'App\Http\Controllers\ChapaController@initialize')->name('pa
 
 // Callback URL after Payment
 Route::get('/callback/{reference}', 'App\Http\Controllers\ChapaController@callback')->name('callback');
+
+
+
+Route::get('/agent/{agentId}/properties', [App\Http\Controllers\Agent\AgentController::class, 'agentProperties'])->name('agent.properties');
+
+Route::get('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'viewagentlogin'])->name('view.agent.login');
+Route::post('/agent/login', [App\Http\Controllers\Agent\AgentController::class, 'checkLogin'])->name('check.agent.login');
+Route::post('/agent/logout', [App\Http\Controllers\Agent\AgentController::class, 'agentlogout'])->name('agent.logout');
+
+Route::group(['prefix' => 'agent', 'middleware'  => 'auth:agent'], function(){
+    Route::get('/index', [App\Http\Controllers\Agent\AgentController::class, 'index'])->name('agent.dashboard');
+
+    Route::get('/all-hometypes', [App\Http\Controllers\Agent\AgentController::class, 'allHomeTypes'])->name('agents.hometypes');
+    Route::get('/create-hometypes', [App\Http\Controllers\Agent\AgentController::class, 'createHomeTypes'])->name('hometypes.create');
+    Route::post('/create-hometypes', [App\Http\Controllers\Agent\AgentController::class, 'saveHomeTypes'])->name('hometypes.save');
+    Route::get('/update-hometypes/{id}', [App\Http\Controllers\Agent\AgentController::class, 'updateHomeTypes'])->name('hometypes.update');
+    Route::post('/update-hometypes/{id}', [App\Http\Controllers\Agent\AgentController::class, 'editHomeTypes'])->name('hometypes.edit');
+    Route::get('/delete-hometypes/{id}', [App\Http\Controllers\Agent\AgentController::class, 'deleteHomeTypes'])->name('hometypes.delete');
+
+    Route::get('/all-requests', [App\Http\Controllers\Agent\AgentController::class, 'Requests'])->name('requests.all');
+
+    Route::get('/all-property', [App\Http\Controllers\Agent\AgentController::class, 'allProperty'])->name('property.all');
+
+    Route::get('/create-property', [App\Http\Controllers\Agent\AgentController::class, 'createProperty'])->name('property.create');
+    Route::post('/create-property', [App\Http\Controllers\Agent\AgentController::class, 'addProperty'])->name('property.add');
+
+    Route::get('/create-gallery', [App\Http\Controllers\Agent\AgentController::class, 'createGallery'])->name('gallery.create');
+    Route::post('/create-gallery', [App\Http\Controllers\Agent\AgentController::class, 'addGallery'])->name('gallery.add');
+
+    Route::get('/delete-property{id}', [App\Http\Controllers\Agent\AgentController::class, 'deleteProperty'])->name('property.delete');
+});

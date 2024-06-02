@@ -22,10 +22,11 @@
                     <div class="site-section-title">
                         <h2>Our Company</h2>
                     </div>
-                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus in cum odio./p>
-                    <p>Illum repudiandae ratione facere explicabo. Consequatur dolor optio iusto, quos autem voluptate ea?
-                        Sunt laudantium fugiat, mollitia voluptate? Modi blanditiis veniam nesciunt architecto odit
-                        voluptatum tempore impedit magnam itaque natus!</p>
+                    <p class="lead">"Hiya Real Estate is more than just a property agency; we're your
+                         trusted partners in finding your dream home or making the most of your investment.
+                         With a commitment to personalized service, integrity, and expertise, we strive to exceed
+                          your expectations every step of the way. Whether you're buying, selling, or renting, Hiya Real Estate
+                         is here to guide you through the process with professionalism and care."</p>
                     <p><a href="#" class="btn btn-outline-primary rounded-0 py-2 px-5">Read More</a></p>
                 </div>
             </div>
@@ -38,9 +39,17 @@
                 <div class="col-md-7">
                     <div class="site-section-title text-center">
                         <h2>Leadership</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur
-                            labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima
-                            quibusdam, laboriosam.</p>
+                        <p>"Dive into our Leadership section to meet the driving
+                            force behind Hiya Real Estate. Discover the individuals who bring expertise,
+                            vision, and dedication to every aspect of our business. Learn more about their
+                             backgrounds and their commitment to excellence in real estate."
+
+
+
+
+
+
+                        </p>
                     </div>
                 </div>
             </div>
@@ -52,11 +61,11 @@
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Megan Smith</h2>
-                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi dolorem totam non quis facere
-                                blanditiis praesentium est. Totam atque corporis nisi, veniam non. Tempore cupiditate, vitae
-                                minus obcaecati provident beatae!</p>
+                            <h2 class="mb-2 font-weight-light text-black h4">Eyob</h2>
+                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Manager>
+                            <p>Our dedicated Real Estate Manager. With a wealth of experience and a passion for
+                                 excellence, Eyob oversees every aspect of our real estate operations with precision
+                                 and care. Discover how Megan's expertise ensures that every client's needs are met with professionalism and integrity.</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -74,11 +83,10 @@
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Brooke Cagle</h2>
-                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cumque vitae voluptates
-                                culpa earum similique corrupti itaque veniam doloribus amet perspiciatis recusandae sequi
-                                nihil tenetur ad, modi quos id magni!</p>
+                            <h2 class="mb-2 font-weight-light text-black h4">Mekdes</h2>
+                            <span class="d-block mb-3 text-white-opacity-05">Sales Director</span>
+                            <p>Our dynamic Sales Director. With a keen eye for market trends and a passion for customer satisfaction, Sarah leads our sales team with enthusiasm and expertise.
+                                Her strategic approach and unwavering commitment to client success ensure that every transaction is executed with precision and care.</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -96,11 +104,12 @@
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Philip Martin</h2>
-                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores illo iusto, inventore, iure
-                                dolorum officiis modi repellat nobis, praesentium perspiciatis, explicabo. Atque cupiditate,
-                                voluptates pariatur odit officia libero veniam quo.</p>
+                            <h2 class="mb-2 font-weight-light text-black h4">Bonsa </h2>
+                            <span class="d-block mb-3 text-white-opacity-05">Property Director</span>
+                            <p>our dedicated Property Manager. With years of experience in the industry,
+                                Bonsa oversees our portfolio with diligence and professionalism. From tenant
+                                relations to property maintenance, Michael's attention to detail and proactive approach ensure that our properties are managed
+                                 to the highest standards, maximizing returns for our clients</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -124,9 +133,11 @@
                 <div class="col-md-7">
                     <div class="site-section-title text-center">
                         <h2>Our Agents</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur
-                            labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima
-                            quibusdam, laboriosam.</p>
+                        <p>Our agents are more than just professionals—they're your partners in achieving
+                            your real estate goals. With a deep understanding of the market and a commitment to
+                             personalized service, each agent brings a unique blend of expertise and passion to
+                             ensure your experience is nothing short of exceptional. Get to know our team and discover
+                             why Hiya Real Estate is your trusted choice for all your real estate needs.</p>
                     </div>
                 </div>
             </div>
@@ -139,11 +150,10 @@
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Steven Ericson</h2>
+                            <h2 class="mb-2 font-weight-light text-black h4">Eyob</h2>
                             <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates sed qui at harum ipsum
-                                earum voluptas a unde error sapiente, sint perspiciatis, fugiat neque iure rerum repellendus
-                                tempora odio doloribus.</p>
+                            <p>our seasoned agent dedicated to realizing your dream home. With expert local knowledge
+                                and personalized service, Emily exceeds expectations at every turn.</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -162,11 +172,12 @@
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Nathan Dumlao</h2>
+                            <h2 class="mb-2 font-weight-light text-black h4">Abel</h2>
                             <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nobis commodi rerum
-                                dicta, nulla. Delectus neque hic deserunt consequuntur esse facere, necessitatibus corrupti!
-                                Blanditiis ratione consequuntur beatae adipisci, voluptatum consequatur.</p>
+                            <p>your dedicated real estate agent. With a passion for matching clients with
+                                 their perfect properties and a commitment to exceptional service,
+                                  Abel is here to guide you through every
+                                step of your real estate journey with professionalism and care.</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -185,11 +196,9 @@
 
                         <div class="text">
 
-                            <h2 class="mb-2 font-weight-light text-black h4">Brooke Cagle</h2>
+                            <h2 class="mb-2 font-weight-light text-black h4">Bonsa </h2>
                             <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa nam tenetur molestiae maiores
-                                officiis consectetur, distinctio aperiam in illum praesentium corrupti, harum porro
-                                reiciendis magnam non enim dolorem aut explicabo.</p>
+                            <p> your trusted partner in real estate. With a focus on understanding your unique needs and a dedication to delivering results.</p>
                             <p>
                                 <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                                 <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -212,9 +221,10 @@
                     <div class="site-section-title">
                         <h2>Frequently Ask Questions</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores quisquam saepe architecto
-                        error corporis aliquam. Cum ipsam a consectetur aut sunt sint animi, pariatur corporis, eaque,
-                        deleniti cupiditate officia.</p>
+                    <p>Welcome to our Frequently Asked Questions (FAQ) section, where we address common
+                        inquiries about our services, processes, and more. Explore below to find answers
+                        to questions you may have. If you don't find what you're looking for,
+                        feel free to reach out to our team for further assistance.</p>
                 </div>
             </div>
 
@@ -230,13 +240,7 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                 data-parent="#accordion">
                                 <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quae cumque
-                                        perspiciatis aperiam accusantium facilis provident aspernatur nisi optio debitis
-                                        dolorum, est eum eligendi vero aut ad necessitatibus nulla sit labore doloremque
-                                        magnam! Ex molestiae, dolor tempora, ad fuga minima enim mollitia consequuntur,
-                                        necessitatibus praesentium eligendi officia recusandae culpa tempore eaque quasi
-                                        ullam magnam modi quidem in amet. Quod debitis error placeat, tempore quasi aliquid
-                                        eaque vel facilis culpa voluptate.</p>
+                                    <p>The name of our company is "Hiya Real Estate"</p>
                                 </div>
                             </div>
                         </div> <!-- .accordion-item -->
@@ -250,11 +254,10 @@
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingOne"
                                 data-parent="#accordion">
                                 <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita.
-                                        Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam
-                                        suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit
-                                        nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime
-                                        ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                                    <p>The pricing for services or products can vary widely depending on the specific
+                                         offerings of "Hiya Real Estate." Typically, pricing may depend on factors such
+                                         as the type of service (buying, selling, renting), location, property value, and any additional services provided. It's best to directly contact
+                                        "Hiya Real Estate" for accurate pricing information tailored to your needs.</p>
                                 </div>
                             </div>
                         </div> <!-- .accordion-item -->
@@ -268,11 +271,8 @@
                             <div id="collapseThree" class="collapse" aria-labelledby="headingOne"
                                 data-parent="#accordion">
                                 <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita.
-                                        Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam
-                                        suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit
-                                        nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime
-                                        ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                                    <p>registration would be required for features like sending requests, saving favorites,
+                                         and contacting agents on many real estate websites. </p>
                                 </div>
                             </div>
                         </div> <!-- .accordion-item -->
@@ -286,11 +286,8 @@
                             <div id="collapseFour" class="collapse" aria-labelledby="headingOne"
                                 data-parent="#accordion">
                                 <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita.
-                                        Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam
-                                        suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit
-                                        nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime
-                                        ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                                    <p>In case of needing support, you should contact our customer support team at support@hiyarealestate.com or call our support hotline at +251-938-756-685.
+                                        We're here to assist you with any questions or issues you may have regarding our services.</p>
                                 </div>
                             </div>
                         </div> <!-- .accordion-item -->
