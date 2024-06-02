@@ -72,6 +72,12 @@ class OwnerController extends Controller
         'processingCount','soldCount', 'propertyCount', 'homeCount',
         'buyCount','requestCount','rentCount','apartment','residential','mixeduse','customers','agent'));
     }
+    public function allProperty(){
+
+        $property = Property::all();
+
+    return view('owner.property', compact('property'));
+    }
 
 
     public function showChangePasswordForm()

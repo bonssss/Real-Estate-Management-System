@@ -29,11 +29,11 @@
                             <a class="nav-link" href="{{route('view.owner.dashboard')}}">Dashboard</a>
                         </li>
                         <li class="nav-item d-lg-none"> <!-- Hide in large screens -->
-                            <a class="nav-link" href="#">Analytics</a>
+                            <a class="nav-link" href="{{route('property.all.owner')}}">Properties</a>
                         </li>
-                        <li class="nav-item d-lg-none"> <!-- Hide in large screens -->
+                        {{-- <li class="nav-item d-lg-none"> <!-- Hide in large screens -->
                             <a class="nav-link" href="#" id="settings-link">Settings</a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         @auth('owner')
@@ -73,14 +73,14 @@
                 </div>
                 <ul class="sidebar-list">
                     <li><a href="{{route('view.owner.dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-                    <li><a href="#" id="settings-link"><i class="fas fa-cog"></i> Settings</a>
+                    <li><a href="{{route('property.all.owner')}}"><i class="fas fa-chart-line"></i> Properties</a></li>
+                    {{-- <li><a href="#" id="settings-link"><i class="fas fa-cog"></i> Settings</a>
                     </li>
                     <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     <li id="change-password-link" class="d-lg-none" style="display: none;">
                         <!-- Hide in large screens -->
                         <a href="#"><i class="fas fa-key"></i> Change Password</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
     @endif
