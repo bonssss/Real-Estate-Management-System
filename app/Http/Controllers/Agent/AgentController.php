@@ -45,19 +45,19 @@ class AgentController extends Controller
 
 
     public function index(){
-        $requestCount = Requests::select()->count();
-        $rentedCount = Property::select()->where('status','rented')->count();
-        $soldCount = Property::select()->where('status','sold')->count();
-        $processingCount = Property::select()->where('status','Processing')->count();
-        $rentCount =Property::select()->where('type', 'Rent')->count();
+        $agentId = Auth::guard('agent')->id();
 
+        // $requestCount = Requests::where('agent_id', $agentId)->count();
+        $rentedCount = Property::where('status', 'rented')->where('agent_id', $agentId)->count();
+        $soldCount = Property::where('status', 'sold')->where('agent_id', $agentId)->count();
+        $processingCount = Property::where('status', 'Processing')->where('agent_id', $agentId)->count();
+        $rentCount = Property::where('type', 'Rent')->where('agent_id', $agentId)->count();
 
+        $propertyCount = Property::where('agent_id', $agentId)->count();
+        $homeCount = PropertyType::count();
+        $buyCount = Property::where('type', 'Buy')->where('agent_id', $agentId)->count();
 
-        $agentCount = Agent::select()->count();
-        $propertyCount = Property::select()->count();
-        $homeCount = PropertyType::select()->count();
-        $buyCount = Property::select()->where('type', 'Buy')->count();
-        return view('agents.index', compact('propertyCount','homeCount','buyCount','rentCount','requestCount'));
+        return view('agents.index', compact('propertyCount', 'homeCount', 'buyCount', 'rentCount'));
     }
 
     public function allHomeTypes(){
@@ -128,10 +128,13 @@ class AgentController extends Controller
     }
 
     public function allProperty(){
+        $agentId = auth()->guard('agent')->id();
 
-        $property = Property::all();
+        // Retrieve properties specific to the authenticated agent
+        $properties = Property::where('agent_id', $agentId)->get();
 
-    return view('agents.property', compact('property'));
+        // Pass the properties data to the view
+        return view('agents.property', compact('properties'));
     }
 
     public function createProperty(){
@@ -141,17 +144,12 @@ class AgentController extends Controller
     return view('agents.createproperty');
     }
 
-    public function addProperty(Request $request){
-        //Request()->validate([
-            //"propstype" => "required|max:40"
-        //]);
-
+    public function addProperty(Request $request) {
         $destinationPath = 'assets/images/';
         $myimage = $request->image->getClientOriginalName();
         $request->image->move(public_path($destinationPath), $myimage);
 
         $addProperty = Property::create([
-
             'title' => $request->title,
             'price' => $request->price,
             'image' => $myimage,
@@ -160,7 +158,6 @@ class AgentController extends Controller
             'sq/ft' => $request->{'sq/ft'},
             'year_built' => $request->year_built,
             'price/sqft' => $request->{'price/sqft'},
-
             'location' => $request->location,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
@@ -168,16 +165,15 @@ class AgentController extends Controller
             'type' => $request->type,
             'city' => $request->city,
             'more_info' => $request->more_info,
-
             'agent_name' => $request->agent_name,
-
+            'agent_id' => auth()->id(), // Set the agent_id here
         ]);
 
         if($addProperty) {
-
             return redirect('/agent/all-property/')->with('success', 'Property Added Successfully');
         }
     }
+
 
     public function createGallery(){
 
@@ -264,18 +260,16 @@ class AgentController extends Controller
 
 
 public function agentProperties($agentId)
-{
-    // Fetch the agent details from the database
-    $agent = Agent::findOrFail($agentId);
+    {
+        // Fetch the agent details from the database
+        $agent = Agent::findOrFail($agentId);
 
-    // Fetch properties specific to this agent
-    $properties = Property::where('agent_id', $agentId)->get();
+        // Fetch properties specific to this agent
+        $properties = Property::where('agent_id', $agentId)->get();
 
-    // Pass the agent and properties data to the view
-    return view('properties', compact('agent', 'properties'));
-}
-
-
+        // Pass the agent and properties data to the view
+        return view('agents.property', compact('agent', 'properties'));
+    }
 
 
 

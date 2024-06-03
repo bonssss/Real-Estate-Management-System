@@ -38,7 +38,7 @@
         <div class="card bg-danger text-white">
             <div class="card-body">
                 <h5 class="card-title"><i data-feather="message-square"></i> Requests</h5>
-                <p class="card-text">Number of Requests: {{$requestCount}}</p>
+                <p class="card-text">Number of Requests: </p>
             </div>
         </div>
     </div>

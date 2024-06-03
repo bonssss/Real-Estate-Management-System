@@ -30,7 +30,8 @@ class Property extends Model
         'agent_name',
         'city',
         'type',
-        'status'
+        'status',
+        'agent_id',
     ];
 
 
