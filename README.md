@@ -30,4 +30,45 @@
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/real-estate-management.git
+   git clone  https://github.com/bonssss/Real-Estate-Management-System.git
+   ```
+
+2. cd real-estate-management:
+```bash
+cd real-estate-management
+```
+3. Install the necessary dependencies:
+   ```bash
+   composer install
+   npm install
+4. Set up your environment file:
+   ```bash
+   cp .env.example .env
+5. Generate the application key:
+   ```bash
+   php artisan key:generate
+6.Run the migrations:
+```bash
+php artisan serve
+```
+
+Usage
+Access the application at http://localhost:8000 (or the specified port).
+Users can register and log in to access their profiles and view properties.
+Agents can manage their property listings.
+Admin can oversee the entire platform and manage users and listings.
+Roles
+Admin
+Manage agents and users.
+Oversee all property listings.
+View reports and analytics.
+Agent
+Create, update, and delete property listings.
+Manage inquiries and interactions with users.
+User
+Search and view property listings.
+Register and manage personal profiles.
+Contact agents for inquiries.
+Contact
+For any questions or feedback, please reach out to me at your-email@example.com.
+
