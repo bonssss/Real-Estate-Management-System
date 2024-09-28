@@ -52,20 +52,41 @@ cd real-estate-management
 php artisan serve
 ```
 
-Usage
-Access the application at http://localhost:8000 (or the specified port).
-Users can register and log in to access their profiles and view properties.
-Agents can manage their property listings.
-Admin can oversee the entire platform and manage users and listings.
-Roles
-Admin
-Manage agents and users.
-Oversee all property listings.
-View reports and analytics.
-Agent
-Create, update, and delete property listings.
-Manage inquiries and interactions with users.
-User
+# Real Estate Management Project
+
+## Usage
+
+1. **Access the Application**: 
+   - Start the Laravel server with `php artisan serve` and visit `http://localhost:8000`.
+
+2. **User Registration and Login**: 
+   - Users can register and log in to access their profiles and view properties.
+
+3. **Agent Features**: 
+   - Agents can manage their property listings.
+
+4. **Admin Features**: 
+   - Admins can oversee the platform, manage users, and view reports.
+
+## Roles
+
+### Admin
+- Manage agents and users.
+- Oversee all property listings.
+- View reports and analytics.
+
+### Agent
+- Create, update, and delete property listings.
+- Manage inquiries from users.
+
+### User
+- Search and view property listings.
+- Register and manage personal profiles.
+- Contact agents for inquiries.
+
+## Contact
+For questions or feedback, reach out to me at [bons6710hos@gmail.com](mailto:bons6710hos@gmail.com).
+
 Search and view property listings.
 Register and manage personal profiles.
 Contact agents for inquiries.
