@@ -91,5 +91,5 @@ Search and view property listings.
 Register and manage personal profiles.
 Contact agents for inquiries.
 Contact
-For any questions or feedback, please reach out to me at your-email@example.com.
+For any questions or feedback, please reach out to me at bons6710hos@gmail.com.
 
